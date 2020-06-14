@@ -3,21 +3,23 @@ call plug#begin()
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
 inoremap <expr> <c-space> coc#refresh()
-command! -nargs=0 Format :call CocActionAsync('format')
+" Add `:Format` command to format current buffer.
+command Format :call CocActionAsync('format')
 nmap <F2> <Plug>(coc-definition)
 
 colorscheme base16-tomorrow-night
-set guifont=DejaVu\ Sans\ Mono:h11
+set guifont=DejaVu\ Sans\ Mono:h10
 
 " To map <Esc> to exit terminal-mode:
 tnoremap <Esc> <C-\><C-n>
 
-let &shell='cmd.exe /k C:/Users/vehlwn/vim-shell.bat'
+" To enter |Terminal-mode| automatically:
+autocmd TermOpen * startinsert
+command Vcvars :terminal cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 
 set autochdir
 set autoindent
@@ -32,7 +34,6 @@ set expandtab
 set fileencoding=utf-8
 set fileencodings=utf8,koi8r,cp1251,cp866,ucs-2le
 set fileformat=unix
-set hidden
 set ignorecase
 set incsearch
 set infercase
