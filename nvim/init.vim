@@ -3,20 +3,27 @@ call plug#begin()
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
 
+" Coc options
 inoremap <expr> <c-space> coc#refresh()
 " Add `:Format` command to format current buffer.
 command Format :call CocActionAsync('format')
 nmap <F2> <Plug>(coc-definition)
 
+" vim-airline options
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" Gui options
 colorscheme base16-tomorrow-night
 set guifont=DejaVu\ Sans\ Mono:h10
 
+" Terminal options
 " To map <Esc> to exit terminal-mode:
 tnoremap <Esc> <C-\><C-n>
-
 " To enter |Terminal-mode| automatically:
 autocmd TermOpen * startinsert
 command Vcvars :terminal cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
