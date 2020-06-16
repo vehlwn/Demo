@@ -8,10 +8,11 @@ Plug 'vim-airline/vim-airline'
 call plug#end()
 
 " Coc options
-inoremap <expr> <c-space> coc#refresh()
-" Add `:Format` command to format current buffer.
+autocmd CursorHold * call CocActionAsync('highlight')
 command Format :call CocActionAsync('format')
+inoremap <expr> <c-space> coc#refresh()
 nmap <F2> <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
 
 " vim-airline options
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -28,7 +29,9 @@ tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * startinsert
 command Vcvars :terminal cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 
-set autochdir
+" cd to current file
+map <leader>cd :cd %:p:h<CR>
+
 set autoindent
 set autoread
 set clipboard+=unnamedplus
@@ -59,6 +62,7 @@ set smartcase
 set smartindent
 set smarttab
 set tabstop=4
+set termguicolors
 set undodir=~/.vim/undo
 set undofile
 set undolevels=10000
@@ -68,6 +72,7 @@ set wildignorecase
 set wildmenu
 
 highlight ColorColumn guibg=DarkGray
+highlight ColorColumn ctermbg=DarkGray
 
 set secure
 set exrc
