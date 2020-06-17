@@ -56,7 +56,7 @@ set number
 set scrolloff=2
 set shiftround
 set shiftwidth=4
-set showbreak=>
+set showbreak=
 set showfulltag
 set smartcase
 set smartindent
