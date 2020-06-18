@@ -75,4 +75,4 @@ highlight ColorColumn guibg=DarkGray
 highlight ColorColumn ctermbg=DarkGray
 
 set secure
-set exrc
+set noexrc
