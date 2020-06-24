@@ -5,8 +5,25 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
 Plug 'cespare/vim-toml'
+Plug 'luochen1990/rainbow'
+Plug 'nathanaelkane/vim-indent-guides'
 
 call plug#end()
+
+" Gui options
+colorscheme base16-tomorrow-night
+set guifont=DejaVu\ Sans\ Mono:h10
+highlight ColorColumn guibg=DarkGray
+highlight ColorColumn ctermbg=DarkGray
+highlight MatchParen gui=bold guibg=NONE guifg=Magenta
+highlight MatchParen cterm=bold ctermbg=NONE ctermfg=Magenta
+
+" Rainbow brackets options
+let g:rainbow_active = 1
+
+" Indent-guides options
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
 
 " Coc options
 autocmd CursorHold * call CocActionAsync('highlight')
@@ -14,14 +31,11 @@ command Format :call CocActionAsync('format')
 inoremap <expr> <c-space> coc#refresh()
 nmap <F2> <Plug>(coc-definition)
 nmap <leader>rn <Plug>(coc-rename)
+highlight CocHighlightText gui=NONE guibg=#054016 guifg=NONE
 
 " vim-airline options
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
-
-" Gui options
-colorscheme base16-tomorrow-night
-set guifont=DejaVu\ Sans\ Mono:h10
 
 " Terminal options
 " To map <Esc> to exit terminal-mode:
@@ -71,9 +85,6 @@ set updatetime=300
 set visualbell
 set wildignorecase
 set wildmenu
-
-highlight ColorColumn guibg=DarkGray
-highlight ColorColumn ctermbg=DarkGray
 
 set secure
 set noexrc
