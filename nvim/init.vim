@@ -1,13 +1,12 @@
 call plug#begin()
 
+Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-peekaboo'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-airline/vim-airline'
-Plug 'cespare/vim-toml'
 Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'preservim/nerdtree'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
 
 call plug#end()
@@ -17,11 +16,7 @@ colorscheme base16-tomorrow-night
 set guifont=DejaVu\ Sans\ Mono:h10
 highlight ColorColumn guibg=DarkGray
 highlight ColorColumn ctermbg=DarkGray
-highlight MatchParen gui=bold guibg=NONE guifg=Magenta
-highlight MatchParen cterm=bold ctermbg=NONE ctermfg=Magenta
-
-" Nerd tree options
-map <C-n> :NERDTreeToggle<CR>
+highlight MatchParen gui=bold cterm=bold ctermbg=NONE guibg=NONE guifg=Magenta ctermfg=Magenta
 
 " Rainbow brackets options
 let g:rainbow_active = 1
