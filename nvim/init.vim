@@ -28,10 +28,13 @@ let g:indent_guides_guide_size = 1
 " Coc options
 autocmd CursorHold * call CocActionAsync('highlight')
 command Format :call CocActionAsync('format')
+highlight CocHighlightText gui=NONE guibg=#054016 guifg=NONE
 inoremap <expr> <c-space> coc#refresh()
 nmap <F2> <Plug>(coc-definition)
+nmap <leader>fq <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
-highlight CocHighlightText gui=NONE guibg=#054016 guifg=NONE
+nmap [g <Plug>(coc-diagnostic-prev)
+nmap ]g <Plug>(coc-diagnostic-next)
 
 " vim-airline options
 let g:airline#extensions#tabline#buffer_nr_show = 1
