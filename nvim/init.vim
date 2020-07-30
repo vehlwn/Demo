@@ -2,6 +2,7 @@ call plug#begin()
 
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
+Plug 'derekwyatt/vim-fswitch'
 Plug 'junegunn/vim-peekaboo'
 Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -20,6 +21,10 @@ set guifont=DejaVu\ Sans\ Mono:h10
 highlight ColorColumn guibg=DarkGray
 highlight ColorColumn ctermbg=DarkGray
 highlight MatchParen gui=bold cterm=bold ctermbg=NONE guibg=NONE guifg=Magenta ctermfg=Magenta
+
+" vim-fswitch options
+" Use F4 key as in QtCreator. (Toggle header and cpp files)
+map <F4> :write!<CR>:FSHere<CR>
 
 " Nerd tree options
 map <C-n> :NERDTreeToggle<CR>
