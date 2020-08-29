@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
 Plug 'derekwyatt/vim-fswitch'
@@ -46,6 +47,9 @@ nmap <leader>fq <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 nmap [g <Plug>(coc-diagnostic-prev)
 nmap ]g <Plug>(coc-diagnostic-next)
+let g:coc_filetype_map = {
+    \ 'jinja.html': 'html',
+    \ }
 
 " vim-airline options
 let g:airline#extensions#tabline#buffer_nr_show = 1
