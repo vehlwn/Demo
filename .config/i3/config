@@ -159,4 +159,7 @@ bar {
 bindsym --release Print exec --no-startup-id import -silent /tmp/latest-screenshot.png
 
 # Keyboard layout tray indicator
-exec_always gxkb
+exec --no-startup-id gxkb
+
+# Notification server
+exec --no-startup-id dunst
