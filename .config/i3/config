@@ -153,7 +153,14 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     workspace_buttons yes
+    # disable clicking on workspace buttons
+    bindsym button1 nop
+    bindsym button4 nop
+    bindsym button5 nop
 }
+# Disable focus change for scroll on titlebars
+bindsym button4 nop
+bindsym button5 nop
 
 # Take a screenshot upon pressing Print (select an area)
 bindsym --release Print exec --no-startup-id import -silent /tmp/latest-screenshot.png
