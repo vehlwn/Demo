@@ -170,3 +170,5 @@ exec --no-startup-id gxkb
 
 # Notification server
 exec --no-startup-id dunst
+
+focus_follows_mouse no
