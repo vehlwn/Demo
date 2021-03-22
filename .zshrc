@@ -21,4 +21,4 @@ export PATH=$PATH:$HOME/.local/bin
 export EDITOR=/usr/bin/nvim
 
 DISABLE_UPDATE_PROMPT=true
-DISABLE_AUTO_UPDATE=false
+DISABLE_AUTO_UPDATE=true
