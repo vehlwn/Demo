@@ -5,6 +5,7 @@ general {
 
 order += "wireless wlp4s0"
 order += "ethernet eth0"
+order += "ethernet wg0"
 order += "battery all"
 order += "memory"
 order += "cpu_usage"
@@ -18,8 +19,13 @@ wireless wlp4s0 {
 }
 
 ethernet eth0 {
-    format_up = "E: %ip (%speed)"
+    format_up = "E: %ip"
     format_down = "E: down"
+}
+
+ethernet wg0 {
+    format_up = "wg0: %ip"
+    format_down = "wg0: down"
 }
 
 battery all {
