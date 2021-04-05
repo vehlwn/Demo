@@ -67,6 +67,7 @@ autocmd TermOpen * startinsert
 command Vcvars :terminal cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\VC\Auxiliary\Build\vcvars64.bat"
 command W :w
 command Wa :wa
+command Tralling :%s/\s\+$//e
 
 " cd to current file
 map <leader>cd :cd %:p:h<CR>
