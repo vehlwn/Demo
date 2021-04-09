@@ -4,6 +4,8 @@ if [ -f ~/.Xresources ]; then
     xrdb ~/.Xresources
 fi
 
+xset r rate 300 40
+
 session=${1:-i3}
 
 case $session in
