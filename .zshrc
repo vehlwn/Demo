@@ -7,6 +7,8 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="candy-kingdom"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting command-time safe-paste)
 
+DISABLE_UPDATE_PROMPT=true
+DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 unsetopt BEEP
@@ -19,6 +21,3 @@ SAVEHIST=100000
 
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=/usr/bin/nvim
-
-DISABLE_UPDATE_PROMPT=true
-DISABLE_AUTO_UPDATE=true
