@@ -42,6 +42,9 @@ block = "sound"
 step_width = 0
 
 [[block]]
+block = "backlight"
+
+[[block]]
 block = "time"
 interval = 1
 format = "%F %T"
