@@ -176,10 +176,4 @@ bindsym button5 nop
 # Take a screenshot upon pressing Print (select an area)
 bindsym --release Print exec --no-startup-id import -silent /tmp/latest-screenshot.png
 
-# Keyboard layout tray indicator
-exec --no-startup-id gxkb
-
-# Notification server
-exec --no-startup-id dunst
-
 focus_follows_mouse no

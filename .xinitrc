@@ -5,6 +5,9 @@ if [ -f ~/.Xresources ]; then
 fi
 
 xset r rate 300 40
+numlockx on
+gxkb&
+dunst&
 
 session=${1:-i3}
 
