@@ -10,7 +10,6 @@ Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
@@ -29,9 +28,6 @@ nmap <C-p> :FZF<CR>
 " vim-fswitch options
 " Use F4 key as in QtCreator. (Toggle header and cpp files)
 map <F4> :write!<CR>:FSHere<CR>
-
-" Nerd tree options
-map <C-n> :NERDTreeToggle<CR>
 
 " Rainbow brackets options
 let g:rainbow_active = 1
@@ -67,9 +63,6 @@ command Vcvars :terminal cmd.exe /k "C:\Program Files (x86)\Microsoft Visual Stu
 command W :w
 command Wa :wa
 command Tralling :%s/\s\+$//e
-
-" cd to current file
-map <leader>cd :cd %:p:h<CR>
 
 set autoindent
 set autoread
