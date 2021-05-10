@@ -151,8 +151,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused #023fab #023fab #e8ffff
-client.unfocused #566888 #566888 #e8ffff
+set $FOCUSED_WINDOW_BACK #023fab
+set $FOCUSED_WINDOW_TEXT #e8ffff
+set $UNFOCUSED_WINDOW_BACK #566888
+set $UNFOCUSED_WINDOW_TEXT #e8ffff
+client.focused $FOCUSED_WINDOW_BACK $FOCUSED_WINDOW_BACK $FOCUSED_WINDOW_TEXT
+client.unfocused $UNFOCUSED_WINDOW_BACK $UNFOCUSED_WINDOW_BACK %UNFOCUSED_WINDOW_TEXT
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -163,8 +167,12 @@ bar {
         separator #ffffff
         background #6e026c
         statusline #ffffff
-        focused_workspace #ffff00 #ffff00 #000000
-        inactive_workspace #3505a6 #3505a6 #ffffff
+        set $FOCUSED_WORKSPACE_BACK #ffff00
+        set $FOCUSED_WORKSPACE_TEXT #000000
+        set $INACTIVE_WORKSPACE_BACK #000000
+        set $INACTIVE_WORKSPACE_TEXT #ffffff
+        focused_workspace $FOCUSED_WORKSPACE_BACK $FOCUSED_WORKSPACE_BACK $FOCUSED_WORKSPACE_TEXT
+        inactive_workspace $INACTIVE_WORKSPACE_BACK $INACTIVE_WORKSPACE_BACK $INACTIVE_WORKSPACE_TEXT
         active_workspace #333333 #333333 #ffffff
         urgent_workspace #2f343a #900000 #ffffff
     }
