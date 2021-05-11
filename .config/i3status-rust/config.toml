@@ -40,6 +40,7 @@ inputs = ["Tdie"]
 [[block]]
 block = "sound"
 step_width = 0
+on_click = "pavucontrol"
 
 [[block]]
 block = "backlight"
