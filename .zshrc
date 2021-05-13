@@ -21,3 +21,4 @@ SAVEHIST=100000
 
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=/usr/bin/nvim
+export FZF_DEFAULT_COMMAND="find -L"
