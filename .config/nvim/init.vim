@@ -64,6 +64,12 @@ command W :w
 command Wa :wa
 command Tralling :%s/\s\+$//e
 
+" Move by visual lines rather than actual lines with k,j
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+
 set autoindent
 set autoread
 set clipboard+=unnamedplus
