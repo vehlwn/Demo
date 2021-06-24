@@ -4,42 +4,39 @@ icons = "awesome"
 [[block]]
 block = "net"
 device = "wlp4s0"
-format = "wlp4s0: {ssid} {ip} {speed_down} {speed_up}"
-use_bits = false
+format = "wlp4s0: {ssid} {ip} {speed_down; K} {speed_up; K}"
 
 [[block]]
 block = "net"
 device = "wg0"
-format = "wg0: {ip} {speed_down} {speed_up}"
-use_bits = false
+format = "wg0: {ip} {speed_down; K} {speed_up; K}"
 
 [[block]]
 block = "net"
 device = "tun0"
-format = "tun0: {ip} {speed_down} {speed_up}"
-use_bits = false
+format = "tun0: {ip} {speed_down; K} {speed_up; K}"
 
 [[block]]
 block = "battery"
 device = "BAT1"
-format = "{percentage}% {time}"
+format = "{percentage} {time}"
 
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{Mug}/{MTg} GiB"
-format_swap = "{SUg}/{STg} GiB"
+format_mem = "{mem_used; M} /{mem_total; M}"
+format_swap = "{swap_used; M} /{swap_total; M}"
 
 [[block]]
 block = "cpu"
 interval = 1
-format = "{utilization} {frequency}"
+format = "{utilization} {barchart} {frequency}"
 
 [[block]]
 block = "temperature"
 collapsed = false
 interval = 1
-format = "{min}°C"
+format = "{min}C"
 chip = "k10temp-*"
 inputs = ["Tdie"]
 
