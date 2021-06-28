@@ -4,17 +4,17 @@ icons = "awesome"
 [[block]]
 block = "net"
 device = "wlp4s0"
-format = "wlp4s0: {ssid} {ip} {speed_down; K} {speed_up; K}"
+format = "wlp4s0: {ssid} {ip} {speed_down} {speed_up}"
 
 [[block]]
 block = "net"
 device = "wg0"
-format = "wg0: {ip} {speed_down; K} {speed_up; K}"
+format = "wg0: {ip} {speed_down} {speed_up}"
 
 [[block]]
 block = "net"
 device = "tun0"
-format = "tun0: {ip} {speed_down; K} {speed_up; K}"
+format = "tun0: {ip} {speed_down} {speed_up}"
 
 [[block]]
 block = "battery"
@@ -24,8 +24,8 @@ format = "{percentage} {time}"
 [[block]]
 block = "memory"
 display_type = "memory"
-format_mem = "{mem_used; M} /{mem_total; M}"
-format_swap = "{swap_used; M} /{swap_total; M}"
+format_mem = "{mem_used} /{mem_total}"
+format_swap = "{swap_used} /{swap_total}"
 
 [[block]]
 block = "cpu"
