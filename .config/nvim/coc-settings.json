@@ -1,7 +1,7 @@
 {
   "python.formatting.provider": "black",
   "python.linting.mypyEnabled": true,
-  "python.linting.flake8Enabled": true,
+  "python.linting.flake8Enabled": false,
   "python.linting.pylintEnabled": false,
   "html.format.wrapLineLength": 85,
   "html.format.maxPreserveNewLines": 1,
