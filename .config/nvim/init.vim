@@ -89,7 +89,6 @@ autocmd BufReadPost *
 
 set autoindent
 set autoread
-set clipboard+=unnamedplus
 set cmdheight=2
 set colorcolumn=80
 set copyindent
