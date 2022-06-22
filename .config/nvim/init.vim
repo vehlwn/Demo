@@ -81,6 +81,12 @@ nnoremap $ g$
 nnoremap g0 0
 nnoremap g$ $
 
+" Restore cursor position when opening a file
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+
 set autoindent
 set autoread
 set clipboard+=unnamedplus
