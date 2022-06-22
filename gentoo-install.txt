@@ -79,5 +79,7 @@ GRUB_CMDLINE_LINUX="dolvm crypt_root=UUID=(/dev/vda2)"
 GRUB_ENABLE_CRYPTODISK=y
 ...
 
+grub-install
+grub-mkconfig -o /boot/grub/grub.cfg
 nvim /etc/hostname
 passwd
