@@ -39,7 +39,7 @@ collapsed = false
 interval = 1
 format = "{min}C"
 chip = "k10temp-*"
-inputs = ["Tdie"]
+inputs = ["Tctl"]
 
 [[block]]
 block = "sound"
