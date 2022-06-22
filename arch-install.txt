@@ -19,7 +19,7 @@ mkdir -p /mnt/boot/efi
 mount /dev/vda1 /mnt/boot/efi
 mkdir -p /mnt/home
 mount /dev/vg/home /mnt/home
-pacstrap /mnt base linux linux-firmware asoundconf base-devel bc bison breeze-icons clang cmake cpio cryptsetup cups dunst efibootmgr git hplip i3-wm i3lock libc++ lvm2 lxappearance neovim net-tools networkmanager ninja noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra rust socat terminator tor xclip xorg-server xorg-xinit xss-lock xf86-video-amdgpu
+pacstrap /mnt base linux linux-firmware asoundconf base-devel bc bison breeze-icons clang cmake cpio cryptsetup cups dunst efibootmgr git grub hplip i3-wm i3lock libc++ lvm2 lxappearance neovim net-tools networkmanager ninja noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra rust socat terminator tor xclip xorg-server xorg-xinit xss-lock xf86-video-amdgpu
 genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -41,7 +41,6 @@ HOOKS=(base udev autodetect keyboard keymap consolefont modconf block encrypt lv
 ...
 
 mkinitcpio -P
-pacman -S --noconfirm --needed grub
 
 nvim /etc/default/grub
 ...
