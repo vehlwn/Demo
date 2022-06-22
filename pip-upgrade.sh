@@ -7,6 +7,7 @@ required_packages=(
     mypy
     neovim
     numpy
+    requests
     scipy
     sympy
     telethon
