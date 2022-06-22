@@ -53,4 +53,4 @@ block = "backlight"
 [[block]]
 block = "time"
 interval = 1
-format = "%F %T"
+format = "%F %a %T"
