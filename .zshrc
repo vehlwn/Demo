@@ -8,7 +8,7 @@ ZSH_THEME="candy-kingdom"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting command-time safe-paste)
 
 DISABLE_UPDATE_PROMPT=true
-DISABLE_AUTO_UPDATE=true
+DISABLE_AUTO_UPDATE=false
 source $ZSH/oh-my-zsh.sh
 
 unsetopt BEEP
