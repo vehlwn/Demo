@@ -13,6 +13,7 @@ case $session in
         gxkb&
         feh --bg-fill ~/Pictures/wallpaper
         dunst&
+        picom --backend glx --vsync --unredir-if-possible --no-fading-openclose --no-dock-shadow --no-dnd-shadow --fade-in-step 1 --fade-out-step 1 --inactive-opacity 1 &
         exec i3
         ;;
     kde)
