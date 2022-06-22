@@ -1,0 +1,20 @@
+# vim: filetype=muttrc
+
+set realname = "Your Name"
+set from = "you@gmail.com"
+source "gpg --decrypt ~/.config/neomutt/accounts/pass.txt.gpg |"
+
+alias me $from
+set folder = "imaps://imap.gmail.com:993"
+set imap_keepalive = 900
+set imap_pass = $my_pass
+set imap_user = $from
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set smtp_pass = $my_pass
+set smtp_url = "smtp://$imap_user@smtp.gmail.com:587"
+set spoolfile = "+INBOX"
+set trash = "+[Gmail]/Bin"
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_user=$from imap_pass=$my_pass"

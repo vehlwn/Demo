@@ -1,0 +1,63 @@
+alternative_order text/plain text/enriched text/html
+auto_view text/html
+bind index,pager r group-reply
+bind attach,index G last-entry
+bind attach,index g first-entry
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind generic,alias,attach,browser,editor,index,compose,pager,pgp,postpone ':' noop
+bind index,pager \CB sidebar-toggle-visible       # Ctrl-b to toggle visibility of the sidebar
+bind index,pager \Cn sidebar-next                 # Ctrl-p to select previous folder
+bind index,pager \Co sidebar-open                 # Ctrl-o to open selected folder
+bind index,pager \Cp sidebar-prev                 # Ctrl-n to select next folder
+bind pager G bottom
+bind pager g top
+bind pager j next-line
+bind pager k previous-line
+set beep = no
+set charset = "utf-8"
+set copy = no
+set crypt_auto_encrypt = yes
+set crypt_autosign = yes
+set crypt_opportunistic_encrypt = yes
+set crypt_reply_sign_encrypted = yes
+set crypt_replysign = yes
+set date_format="%F %T"
+set delete = yes
+set editor=`echo \$EDITOR`
+set fast_reply = yes
+set forward_quote = yes
+set header_cache = "~/.cache/neomutt"
+set imap_check_subscribed = yes
+set include = yes
+set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+set mail_check_stats = yes
+set mailcap_path = "~/.config/neomutt/mailcap"
+set message_cachedir = "~/.cache/neomutt"
+set pager_context = 3
+set pager_stop = yes
+set postpone_encrypt = yes
+set record = ""
+set send_charset="utf-8"
+set sidebar_delim_chars = "/"
+set sidebar_folder_indent = no
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_indent_string="  "
+set sidebar_short_path = yes
+set sidebar_sort_method = unsorted
+set sidebar_visible = yes
+set sidebar_width = 25
+set sig_dashes = no
+set sleep_time = 0
+set smtp_authenticators="login"
+set sort=threads
+set sort_aux=reverse-last-date-received
+set ssl_force_tls = yes
+set ssl_starttls = yes
+set text_flowed = yes
+set tilde = yes
+source ~/.config/neomutt/vombatidae.neomuttrc
+
+# Accounts
+source ~/.config/neomutt/accounts/gmail
+folder-hook $folder 'source ~/.config/neomutt/accounts/gmail'
