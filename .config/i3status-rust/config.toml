@@ -41,6 +41,7 @@ inputs = ["Tdie"]
 block = "sound"
 step_width = 0
 on_click = "pavucontrol"
+show_volume_when_muted = true
 
 [[block]]
 block = "backlight"
