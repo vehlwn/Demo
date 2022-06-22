@@ -5,7 +5,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="candy-kingdom"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting command-time safe-paste)
+plugins=(git zsh-autosuggestions fast-syntax-highlighting command-time safe-paste colored-man-pages update-custom-plugins)
 
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=false
