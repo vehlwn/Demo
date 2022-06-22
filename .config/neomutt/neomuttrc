@@ -33,6 +33,7 @@ set include = yes
 set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"
 set mail_check_stats = yes
 set mailcap_path = "~/.config/neomutt/mailcap"
+set markers = no
 set message_cachedir = "~/.cache/neomutt"
 set pager_context = 3
 set pager_stop = yes
