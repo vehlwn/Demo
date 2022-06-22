@@ -7,16 +7,6 @@ device = "wlp4s0"
 format = "wlp4s0: {ip} {speed_down} {speed_up}"
 
 [[block]]
-block = "net"
-device = "wg0"
-format = "wg0: {ip} {speed_down} {speed_up}"
-
-[[block]]
-block = "net"
-device = "tun0"
-format = "tun0: {ip} {speed_down} {speed_up}"
-
-[[block]]
 block = "battery"
 device = "BAT1"
 format = "{percentage} {time}"
