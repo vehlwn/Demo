@@ -22,4 +22,3 @@ export EDITOR=/usr/bin/nvim
 
 DISABLE_UPDATE_PROMPT=true
 DISABLE_AUTO_UPDATE=false
-umask 077
