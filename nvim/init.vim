@@ -6,6 +6,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
 
@@ -17,6 +18,9 @@ set guifont=DejaVu\ Sans\ Mono:h10
 highlight ColorColumn guibg=DarkGray
 highlight ColorColumn ctermbg=DarkGray
 highlight MatchParen gui=bold cterm=bold ctermbg=NONE guibg=NONE guifg=Magenta ctermfg=Magenta
+
+" Nerd tree options
+map <C-n> :NERDTreeToggle<CR>
 
 " Rainbow brackets options
 let g:rainbow_active = 1
