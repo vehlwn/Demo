@@ -159,4 +159,4 @@ bar {
 bindsym --release Print exec --no-startup-id import -silent /tmp/latest-screenshot.png
 
 # Keyboard layout tray indicator
-exec_always sbxkb
+exec_always gxkb
