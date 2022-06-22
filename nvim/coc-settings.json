@@ -3,7 +3,10 @@
     "python.linting.mypyEnabled": true,
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
+    "html.format.wrapLineLength": 85,
+    "html.format.maxPreserveNewLines": 1,
     "coc.preferences.colorSupport": true,
+    "html.autoClosingTags": true,
     "python.formatting.blackArgs": [
         "--line-length",
         "85"
