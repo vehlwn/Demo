@@ -1,0 +1,13 @@
+; RFC 1035, 5. MASTER FILES
+$ORIGIN my-zone.lan.  ; RFC 6762, Appendix G. Private DNS Namespaces
+$TTL 3600
+@ IN SOA ns hostmaster (
+	2022062011  ; serial number, date "+%Y%m%d%H"
+	28800       ; Refresh
+	7200        ; Retry
+	864000      ; Expire
+	3600        ; Negative response caching TTL, RFC 2308, 4. SOA Minimum Field
+)
+@          IN     NS   ns
+ns         IN     A    10.20.30.1
+venera     IN     A    10.20.30.2
