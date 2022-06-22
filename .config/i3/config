@@ -192,6 +192,8 @@ bar {
 bindsym button4 nop
 bindsym button5 nop
 
+hide_edge_borders vertical
+
 set $SCREENSHOT_PATH /tmp/latest-screenshot.jpg
 # Take a screenshot upon pressing Alt Print (select an area)
 bindsym --release Mod1+Sys_Req exec ~/.config/i3/select-screenshot.sh $SCREENSHOT_PATH
