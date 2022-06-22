@@ -1,0 +1,10 @@
+[user]
+	email = 36479428+vehlwn@users.noreply.github.com
+	name = vehlwn
+	signingkey = 6D7680DAD6106E1B5F72FFDE5C73B4FF3F6BEFA1
+[commit]
+	gpgsign = true
+[pull]
+	rebase = true
+[init]
+	defaultBranch = master
