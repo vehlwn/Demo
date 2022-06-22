@@ -2,7 +2,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Noto Sans 9
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -151,25 +151,25 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $FOCUSED_WINDOW_BACK #023fab
-set $FOCUSED_WINDOW_TEXT #e8ffff
-set $UNFOCUSED_WINDOW_BACK #566888
-set $UNFOCUSED_WINDOW_TEXT #e8ffff
+set $FOCUSED_WINDOW_BACK #0256ec
+set $FOCUSED_WINDOW_TEXT #ffffff
+set $UNFOCUSED_WINDOW_BACK #7c9de4
+set $UNFOCUSED_WINDOW_TEXT #ffffff
 client.focused $FOCUSED_WINDOW_BACK $FOCUSED_WINDOW_BACK $FOCUSED_WINDOW_TEXT
-client.unfocused $UNFOCUSED_WINDOW_BACK $UNFOCUSED_WINDOW_BACK %UNFOCUSED_WINDOW_TEXT
+client.unfocused $UNFOCUSED_WINDOW_BACK $UNFOCUSED_WINDOW_BACK $UNFOCUSED_WINDOW_TEXT
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    font pango:DejaVu Sans Mono, FontAwesome 8
+    font pango:Noto Sans 9
     status_command ~/projects/rust/i3status-rust/target/release/i3status-rs
     colors {
         separator #ffffff
-        background #6e026c
+        background #2b5fcc
         statusline #ffffff
-        set $FOCUSED_WORKSPACE_BACK #ffff00
-        set $FOCUSED_WORKSPACE_TEXT #000000
-        set $INACTIVE_WORKSPACE_BACK #000000
+        set $FOCUSED_WORKSPACE_BACK #1c4fbc
+        set $FOCUSED_WORKSPACE_TEXT #ffffff
+        set $INACTIVE_WORKSPACE_BACK #3683f7
         set $INACTIVE_WORKSPACE_TEXT #ffffff
         focused_workspace $FOCUSED_WORKSPACE_BACK $FOCUSED_WORKSPACE_BACK $FOCUSED_WORKSPACE_TEXT
         inactive_workspace $INACTIVE_WORKSPACE_BACK $INACTIVE_WORKSPACE_BACK $INACTIVE_WORKSPACE_TEXT
