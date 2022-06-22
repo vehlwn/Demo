@@ -69,6 +69,10 @@ nnoremap k gk
 nnoremap j gj
 nnoremap gk k
 nnoremap gj j
+nnoremap 0 g0
+nnoremap $ g$
+nnoremap g0 0
+nnoremap g$ $
 
 set autoindent
 set autoread
