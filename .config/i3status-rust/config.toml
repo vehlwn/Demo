@@ -4,7 +4,7 @@ icons = "awesome"
 [[block]]
 block = "net"
 device = "wlp4s0"
-format = "wlp4s0: {ssid} {ip} {speed_down} {speed_up}"
+format = "wlp4s0: {ip} {speed_down} {speed_up}"
 
 [[block]]
 block = "net"
