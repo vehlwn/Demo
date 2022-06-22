@@ -25,6 +25,7 @@ arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
 locale-gen
 echo "arch-host" > /etc/hostname
 echo '127.0.0.1 localhost
