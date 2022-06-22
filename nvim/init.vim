@@ -7,6 +7,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'cespare/vim-toml'
 Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'preservim/nerdtree'
+Plug 'vim-scripts/bufkill.vim'
 
 call plug#end()
 
@@ -17,6 +19,9 @@ highlight ColorColumn guibg=DarkGray
 highlight ColorColumn ctermbg=DarkGray
 highlight MatchParen gui=bold guibg=NONE guifg=Magenta
 highlight MatchParen cterm=bold ctermbg=NONE ctermfg=Magenta
+
+" Nerd tree options
+map <C-n> :NERDTreeToggle<CR>
 
 " Rainbow brackets options
 let g:rainbow_active = 1
