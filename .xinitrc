@@ -7,6 +7,7 @@ fi
 xset r rate 300 40
 numlockx on
 gxkb&
+feh --bg-fill ~/Pictures/wallpaper
 dunst&
 
 session=${1:-i3}
