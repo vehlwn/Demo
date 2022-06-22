@@ -4,6 +4,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'junegunn/vim-peekaboo'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline'
+Plug 'cespare/vim-toml'
 
 call plug#end()
 
