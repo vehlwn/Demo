@@ -34,4 +34,4 @@ rsync ${OPTS} \
   --link-dest "${LATEST_LINK}" \
   ${SOURCE_DIR} \
   "${BACKUP_PATH}"
-ln -sf "${BACKUP_PATH}" "${LATEST_LINK}"
+ln --symbolic --force --no-target-directory "${BACKUP_PATH}" "${LATEST_LINK}"
