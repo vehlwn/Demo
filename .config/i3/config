@@ -192,7 +192,11 @@ bar {
 bindsym button4 nop
 bindsym button5 nop
 
-hide_edge_borders vertical
+hide_edge_borders both
+
+for_window [class="(?i)chromium"] border pixel 1
+
+for_window [all] title_window_icon on
 
 set $SCREENSHOT_PATH /tmp/latest-screenshot.jpg
 # Take a screenshot upon pressing Alt Print (select an area)
