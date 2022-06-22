@@ -5,13 +5,13 @@ icons = "awesome"
 block = "net"
 device = "wlp4s0"
 format = "wlp4s0: {ssid} {ip} {speed_down} {speed_up}"
-use_bits = true
+use_bits = false
 
 [[block]]
 block = "net"
 device = "wg0"
 format = "wg0: {ip} {speed_down} {speed_up}"
-use_bits = true
+use_bits = false
 
 [[block]]
 block = "battery"
@@ -32,7 +32,7 @@ format = "{utilization} {frequency}"
 [[block]]
 block = "temperature"
 collapsed = false
-interval = 10
+interval = 1
 format = "{min}°C"
 chip = "k10temp-*"
 inputs = ["Tdie"]
@@ -43,5 +43,5 @@ step_width = 0
 
 [[block]]
 block = "time"
-interval = 5
+interval = 1
 format = "%F %T"
