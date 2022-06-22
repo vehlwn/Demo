@@ -20,7 +20,7 @@ nano /mnt/gentoo/etc/portage/make.conf
 ...
 COMMON_FLAGS="-O2 -pipe -march=native"
 MAKEOPTS="-j16"
-USE="${USE} X networkmanager"
+USE="${USE} X networkmanager v4l x264"
 ACCEPT_LICENSE="*"
 GRUB_PLATFORMS="efi-64"
 ...
