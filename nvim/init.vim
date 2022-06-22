@@ -6,7 +6,9 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'luochen1990/rainbow'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'preservim/nerdtree'
+Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
 
