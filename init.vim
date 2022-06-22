@@ -34,6 +34,7 @@ set expandtab
 set fileencoding=utf-8
 set fileencodings=utf8,koi8r,cp1251,cp866,ucs-2le
 set fileformat=unix
+set hidden
 set ignorecase
 set incsearch
 set infercase
