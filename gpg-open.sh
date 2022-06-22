@@ -12,8 +12,10 @@ set -o nounset
 
 function cleanup()
 {
+    echo "Overwriting ${OUT_FILE}..."
+    shred --verbose --iterations=0 --zero --remove=unlink "${OUT_FILE}"
     echo "Deleting ${OUT_DIR}..."
-    rm -rf "${OUT_DIR}"
+    rm --verbose --dir "${OUT_DIR}"
 }
 trap cleanup EXIT
 
