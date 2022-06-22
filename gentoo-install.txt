@@ -10,7 +10,10 @@ mkfs.fat /dev/vda1
 mkfs.ext4 /dev/vg/root
 mkfs.ext4 /dev/vg/home
 mount /dev/vg/root /mnt/gentoo/
+mkdir -p /mnt/gentoo/boot/efi
+mount /dev/vda1 /mnt/gentoo/boot/efi
 # scp stage3-amd64-systemd-20210414T214503Z.tar.xz root@192.168.122.90:/mnt/gentoo
+cd /mnt/gentoo
 tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
 
 nano /mnt/gentoo/etc/portage/make.conf
@@ -34,8 +37,6 @@ mount --make-rslave /mnt/gentoo/dev
 chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) ${PS1}"
-mkdir /boot/efi
-mount /dev/vda1 /boot/efi
 emerge-webrsync
 emerge --sync
 eselect profile list
