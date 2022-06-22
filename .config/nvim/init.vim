@@ -118,7 +118,6 @@ set smartindent
 set smarttab
 set tabstop=4
 set termguicolors
-set textwidth=85
 set undodir=~/.vim/undo
 set undofile
 set undolevels=10000
