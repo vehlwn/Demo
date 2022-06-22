@@ -5,15 +5,23 @@ then
     echo "No input file given"
     exit 1
 fi
-in_file="$1"
-out_file="$(mktemp)"
-gpg --yes -d -o $out_file $in_file
-if [ "$?" != "0" ]
-then
-    echo "Failed to decrypt file"
-else
-    echo "Opening flle..."
-    nvim $out_file
-    gpg --yes -e -s -o $in_file $out_file
-fi
-rm $out_file
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+function cleanup()
+{
+    echo "Deleting ${OUT_DIR}..."
+    rm -rf "$OUT_DIR"
+}
+trap cleanup EXIT
+
+readonly IN_FILE="$1"
+readonly OUT_DIR="$(mktemp --directory)"
+readonly OUT_FILE="${OUT_DIR}/$(basename "${IN_FILE}" | sed 's/\.gpg$//')"
+
+gpg --decrypt --yes -o "$OUT_FILE" "$IN_FILE"
+echo "Opening ${OUT_FILE}..."
+nvim "$OUT_FILE"
+gpg --encrypt --sign --yes -o "$IN_FILE" "$OUT_FILE"
