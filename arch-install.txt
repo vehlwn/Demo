@@ -28,9 +28,12 @@ echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 locale-gen
 echo "arch-host" > /etc/hostname
-echo '127.0.0.1 localhost
+
+cat << EOF > /etc/hosts
+127.0.0.1 localhost
 ::1 localhost
-127.0.1.1 arch-host.localdomain arch-host' > /etc/hosts
+127.0.1.1 arch-host.localdomain arch-host
+EOF
 
 nvim /etc/mkinitcpio.conf
 ...
@@ -70,3 +73,11 @@ Section "Device"
     Option "TearFree" "true"
 EndSection
 EOF
+
+useradd -m -G wheel -s $(which bash) username
+passwd username
+
+EDITOR=/usr/bin/nvim visudo
+...
+%wheel ALL=(ALL) ALL
+...
