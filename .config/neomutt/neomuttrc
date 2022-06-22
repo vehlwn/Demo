@@ -1,5 +1,5 @@
 alternative_order text/plain text/enriched text/html
-auto_view text/html
+auto_view text/html application/pdf
 bind index,pager r group-reply
 bind attach,index G last-entry
 bind attach,index g first-entry
