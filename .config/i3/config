@@ -158,3 +158,5 @@ bar {
 # Take a screenshot upon pressing Print (select an area)
 bindsym --release Print exec --no-startup-id import -silent /tmp/latest-screenshot.png
 
+# Keyboard layout tray indicator
+exec_always sbxkb
