@@ -13,6 +13,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
+Plug 'pboettch/vim-cmake-syntax'
 
 call plug#end()
 
@@ -31,6 +32,12 @@ map <F4> :write!<CR>:FSHere<CR>
 
 " Rainbow brackets options
 let g:rainbow_active = 1
+let g:rainbow_conf = {
+\   'separately': {
+\       'cmake': 0,
+\   }
+\}
+
 
 " Indent-guides options
 let g:indent_guides_enable_on_vim_startup = 1
