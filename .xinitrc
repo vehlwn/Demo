@@ -13,7 +13,6 @@ case $session in
         gxkb&
         feh --bg-fill ~/Pictures/wallpaper
         dunst&
-        picom&
         exec i3
         ;;
     kde)
