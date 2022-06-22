@@ -1,7 +1,17 @@
 #!/bin/bash
 
-tmpfile=$(mktemp)
-pip3 freeze > "$tmpfile"
-sed 's/==/>=/' -i "$tmpfile"
-pip3 install -r "$tmpfile" --upgrade --user
-rm "$tmpfile"
+required_packages=(
+    black
+    cmakelang
+    conan
+    mypy
+    neovim
+    numpy
+    scipy
+    sympy
+    telethon
+    tensorflow
+    tensorflow_probability
+)
+pip3 install --upgrade --user wheel
+pip3 install --upgrade --user ${required_packages[*]}
