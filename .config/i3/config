@@ -165,7 +165,7 @@ client.focused_inactive     $UNFOCUSED_WINDOW_BORDER $UNFOCUSED_WINDOW_BACK $UNF
 # finds out, if available)
 bar {
     font pango:Noto Sans, FontAwesome 9
-    status_command ~/projects/rust/i3status-rust/target/release/i3status-rs
+    status_command i3status-rs
     colors {
         separator #ffffff
         background #2b5fcc
