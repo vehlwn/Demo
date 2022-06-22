@@ -14,6 +14,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'pboettch/vim-cmake-syntax'
+Plug 'chr4/nginx.vim'
 
 call plug#end()
 
