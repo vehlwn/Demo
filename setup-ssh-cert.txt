@@ -1,0 +1,9 @@
+$ cd /etc/ssh
+$ ssh-keygen -t rsa -C 'ca@server_hostname' -f ca
+$ ssh-keygen -s ca -h -I 'server_hostname' ssh_host_rsa_key.pub
+$ cat sshd_config
+HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub
+TrustedUserCAKeys /etc/ssh/ca.pub
+
+$ echo -n "@cert-authority * " | cat - ca.pub >> client/known_hosts
+$ ssh-keygen -s ca -I 'client@server_hostname' -V +365d -n client client/id_rsa.pub
