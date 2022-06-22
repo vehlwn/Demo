@@ -43,7 +43,7 @@ inputs = ["Tdie"]
 
 [[block]]
 block = "sound"
-step_width = 0
+step_width = 5
 on_click = "pavucontrol"
 show_volume_when_muted = true
 
