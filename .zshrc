@@ -23,3 +23,4 @@ export PATH=$PATH:$HOME/.local/bin
 export EDITOR=/usr/bin/nvim
 export FZF_DEFAULT_COMMAND="find -L"
 export DXVK_HUD=fps,memory,gpuload
+export GTK_USE_PORTAL=1
