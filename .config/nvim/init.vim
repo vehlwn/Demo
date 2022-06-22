@@ -20,8 +20,7 @@ call plug#end()
 " Gui options
 colorscheme base16-tomorrow-night
 set guifont=DejaVu\ Sans\ Mono:h10
-highlight ColorColumn guibg=DarkGray
-highlight ColorColumn ctermbg=DarkGray
+highlight ColorColumn guibg=#08004d
 highlight MatchParen gui=bold cterm=bold ctermbg=NONE guibg=NONE guifg=Magenta ctermfg=Magenta
 
 " FZF options
