@@ -18,6 +18,9 @@ case $session in
     kde)
         exec startplasma-x11
         ;;
+    cin)
+        exec cinnamon-session
+        ;;
     xfce|xfce4)
         exec startxfce4
         ;;
