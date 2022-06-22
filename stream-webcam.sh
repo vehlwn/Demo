@@ -3,6 +3,7 @@ set -e
 
 # https://wiki.videolan.org/Documentation:Streaming_HowTo/Command_Line_Examples/
 # https://wiki.videolan.org/Documentation:Streaming_HowTo/Advanced_Streaming_Using_the_Command_Line
+# https://trac.ffmpeg.org/wiki/Hardware/VAAPI
 ffmpeg \
     -hide_banner \
     -vaapi_device /dev/dri/renderD128 \
