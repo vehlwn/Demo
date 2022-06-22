@@ -14,6 +14,12 @@ format = "wg0: {ip} {speed_down} {speed_up}"
 use_bits = false
 
 [[block]]
+block = "net"
+device = "tun0"
+format = "tun0: {ip} {speed_down} {speed_up}"
+use_bits = false
+
+[[block]]
 block = "battery"
 device = "BAT1"
 format = "{percentage}% {time}"
