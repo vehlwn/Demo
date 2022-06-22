@@ -4,6 +4,14 @@
     "python.linting.flake8Enabled": true,
     "python.linting.pylintEnabled": false,
     "coc.preferences.colorSupport": true,
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "85"
+    ],
+    "python.linting.flake8Args": [
+        "--max-line-length",
+        "85"
+    ],
     "languageserver": {
         "clangd": {
             "command": "C:/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/Llvm/bin/clangd.exe",
