@@ -1,0 +1,91 @@
+rc-service sshd start
+cfdisk /dev/vda
+cryptsetup luksFormat --type luks1 /dev/vda2
+cryptsetup open /dev/vda2 cryptlvm
+pvcreate /dev/mapper/cryptlvm
+vgcreate vg /dev/mapper/cryptlvm
+lvcreate -L 40G vg -n root
+lvcreate -l 100%FREE vg -n home
+mkfs.fat /dev/vda1
+mkfs.ext4 /dev/vg/root
+mkfs.ext4 /dev/vg/home
+mount /dev/vg/root /mnt/gentoo/
+# scp stage3-amd64-systemd-20210414T214503Z.tar.xz root@192.168.122.90:/mnt/gentoo
+tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
+
+nano /mnt/gentoo/etc/portage/make.conf
+...
+COMMON_FLAGS="-O2 -pipe -march=native"
+MAKEOPTS="-j16"
+USE="${USE} X networkmanager"
+ACCEPT_LICENSE="*"
+GRUB_PLATFORMS="efi-64"
+...
+
+mirrorselect -i -o >> /mnt/gentoo/etc/portage/make.conf
+mkdir --parents /mnt/gentoo/etc/portage/repos.conf
+cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf
+cp --dereference /etc/resolv.conf /mnt/gentoo/etc/
+mount --types proc /proc /mnt/gentoo/proc
+mount --rbind /sys /mnt/gentoo/sys
+mount --make-rslave /mnt/gentoo/sys
+mount --rbind /dev /mnt/gentoo/dev
+mount --make-rslave /mnt/gentoo/dev
+chroot /mnt/gentoo /bin/bash
+source /etc/profile
+export PS1="(chroot) ${PS1}"
+mkdir /boot/efi
+mount /dev/vda1 /boot/efi
+emerge-webrsync
+emerge --sync
+eselect profile list
+# eselect profile set 16
+emerge --ask --verbose --update --deep --newuse @world
+emerge neovim tmux
+emerge --autounmask-write  networkmanager
+
+etc-update
+...
+-3
+...
+
+ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+eselect locale list
+eselect locale set 4
+env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
+
+nvim /etc/fstab
+...
+UUID=866C-3FA2                            /boot/efi      vfat    umask=0077 0 2
+# /dev/vg/home
+UUID=6b27487b-07b6-4352-a6f0-6b546a34298e /home          ext4    defaults,noatime 0 2
+# /dev/vg/root
+UUID=e3c95c5c-2b3f-45ba-8fe6-38389950a2c4 /              ext4    defaults,noatime 0 1
+...
+
+emerge sys-kernel/gentoo-sources sys-kernel/genkernel sys-fs/cryptsetup
+eselect kernel list
+eselect kernel set 1
+cp -p /etc/genkernel.conf /etc/genkernel.conf.ORIG
+
+cat genkernel.conf
+...
+MAKEOPTS="$(portageq envvar MAKEOPTS)"
+LVM="yes"
+LUKS="yes"
+...
+
+genkernel --luks --lvm  all
+echo "sys-boot/grub device-mapper" > /etc/portage/package.use/grub
+emerge sys-boot/grub:2
+
+nvim /etc/default/grub
+...
+# /dev/vda2
+GRUB_CMDLINE_LINUX="dolvm crypt_root=UUID=e768d516-a775-4ffa-af8a-b3c73284d2e9 root=/dev/vg/root"
+...
+
+nvim /etc/hostname
+passwd
