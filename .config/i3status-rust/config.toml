@@ -1,0 +1,47 @@
+theme = "solarized-dark"
+icons = "awesome"
+
+[[block]]
+block = "net"
+device = "wlp4s0"
+format = "wlp4s0: {ssid} {ip} {speed_down} {speed_up}"
+use_bits = true
+
+[[block]]
+block = "net"
+device = "wg0"
+format = "wg0: {ip} {speed_down} {speed_up}"
+use_bits = true
+
+[[block]]
+block = "battery"
+device = "BAT1"
+format = "{percentage}% {time}"
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mug}/{MTg} GiB"
+format_swap = "{SUg}/{STg} GiB"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{utilization} {frequency}"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+format = "{min}°C"
+chip = "k10temp-*"
+inputs = ["Tdie"]
+
+[[block]]
+block = "sound"
+step_width = 0
+
+[[block]]
+block = "time"
+interval = 5
+format = "%F %T"
