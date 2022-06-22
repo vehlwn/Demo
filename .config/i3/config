@@ -151,7 +151,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-client.focused #0358ef #0358ef #e8ffff
+client.focused #023fab #023fab #e8ffff
 client.unfocused #566888 #566888 #e8ffff
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -160,9 +160,9 @@ bar {
     font pango:DejaVu Sans Mono, FontAwesome 8
     status_command ~/projects/rust/i3status-rust/target/release/i3status-rs
     colors {
-        separator #666666
-        background #222222
-        statusline #dddddd
+        separator #ffffff
+        background #6e026c
+        statusline #ffffff
         focused_workspace #0088CC #0088CC #ffffff
         active_workspace #333333 #333333 #ffffff
         inactive_workspace #333333 #333333 #888888
