@@ -44,7 +44,7 @@ nvim /etc/default/grub
 ...
 GRUB_TIMEOUT=30
 # /dev/vda2: TYPE="crypto_LUKS"
-GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=e768d516-a775-4ffa-af8a-b3c73284d2e9:cryptlvm root=/dev/vg/root"
+GRUB_CMDLINE_LINUX_DEFAULT="cryptdevice=UUID=e768d516-a775-4ffa-af8a-b3c73284d2e9:cryptlvm root=/dev/vg/root acpi_backlight=vendor"
 GRUB_ENABLE_CRYPTODISK=y
 GRUB_COLOR_HIGHLIGHT="white/red"
 GRUB_COLOR_NORMAL="white/blue"
