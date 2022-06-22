@@ -22,6 +22,7 @@ device = "BAT1"
 format = "{percentage} {time}"
 
 [[block]]
+interval = 1
 block = "memory"
 display_type = "memory"
 format_mem = "{mem_used} /{mem_total}"
