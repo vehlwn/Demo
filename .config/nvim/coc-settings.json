@@ -6,7 +6,8 @@
   "html.format.wrapLineLength": 85,
   "html.format.maxPreserveNewLines": 1,
   "html.autoClosingTags": true,
-  "rust-client.disableRustup": true,
+  "rust-analyzer.updates.checkOnStartup": false,
+  "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
   "python.formatting.blackArgs": ["--line-length", "85"],
   "python.linting.flake8Args": ["--max-line-length", "85"],
   "languageserver": {
