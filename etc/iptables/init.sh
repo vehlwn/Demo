@@ -15,7 +15,7 @@ iptables -A my-block -j DROP
 
 # Helper chain to configure LIMIT messages
 iptables --new-chain my-log-limit-drop
-iptables -A my-log-limit-drop -m limit --limit 3/m --limit-burst 10 -j LOG --log-prefix "[IPT LIMIT] "
+iptables -A my-log-limit-drop -m limit --limit 5/m --limit-burst 10 -j LOG --log-prefix "[IPT LIMIT] "
 iptables -A my-log-limit-drop -j DROP
 
 # Custom chain for conditional blocking by source IP with rate limiting
