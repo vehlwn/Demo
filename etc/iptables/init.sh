@@ -20,9 +20,9 @@ iptables -A my-log-limit-drop -j DROP
 
 # Custom chain for conditional blocking by source IP with rate limiting
 iptables --new-chain my-limit
-iptables -A my-limit -m conntrack --ctstate NEW -m recent \
-	--update --seconds 30 --hitcount 6 --rsource -j my-log-limit-drop
-iptables -A my-limit -m recent --set -j ACCEPT
+iptables -A my-limit -m recent --set --rsource
+iptables -A my-limit -m recent --rcheck --seconds 30 --hitcount 6 --rsource -j my-log-limit-drop
+iptables -A my-limit -j ACCEPT
 
 # Unlimited traffic on the loopback interface
 iptables -A INPUT -i lo -j ACCEPT
