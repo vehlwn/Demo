@@ -4,6 +4,7 @@ required_packages=(
     black
     cmakelang
     conan
+    matplotlib
     mypy
     neovim
     numpy
