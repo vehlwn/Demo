@@ -54,12 +54,8 @@ iptables -A INPUT -p icmp --icmp-type time-exceeded -j ACCEPT
 # Incoming ping echo message (Type 8)
 # iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
-# Refuse directed broadcasts
-# Used to map networks and in Denial of Service attacks
-iptables -A INPUT -i enp0s5 -d 66.66.66.0 -j DROP
-iptables -A INPUT -i enp0s5 -d 66.66.66.255 -j DROP
-# Refuse limited broadcasts
-iptables -A INPUT -i enp0s5 -d 255.255.255.255 -j DROP
+# Refuse broadcasts
+iptables -A INPUT -m addrtype --dst-type BROADCAST -j DROP
 
 readonly CLASS_D_MULTICAST="224.0.0.0/4"
 # Refuse Class D multicast addresses
