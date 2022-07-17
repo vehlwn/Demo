@@ -19,7 +19,7 @@ mkdir -p /mnt/boot/efi
 mount /dev/vda1 /mnt/boot/efi
 mkdir -p /mnt/home
 mount /dev/vg/home /mnt/home
-pacstrap /mnt base linux linux-firmware asoundconf base-devel bc bison breeze-icons clang cmake cpio cryptsetup cups dunst efibootmgr git grub hplip i3-wm i3lock libc++ lvm2 lxappearance neovim net-tools networkmanager ninja noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra rust socat sudo terminator tor xclip xorg-server xorg-xinit xss-lock xf86-video-amdgpu
+pacstrap /mnt base linux linux-firmware
 genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Europe/Moscow /etc/localtime
@@ -27,6 +27,12 @@ hwclock --systohc
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 locale-gen
+pacman -Suy alacritty asoundconf base-devel bc bison breeze-icons clang cmake      \
+    cpio cryptsetup cups dunst efibootmgr git grub hplip i3-wm i3lock libc++ lvm2  \
+    lxappearance man-pages neovim net-tools networkmanager ninja noto-fonts        \
+    noto-fonts-cjk noto-fonts-emoji noto-fonts-extra rust socat sudo tor xclip     \
+    xf86-video-amdgpu xorg-server xorg-xinit xss-lock
+
 echo "arch-host" > /etc/hostname
 
 cat << EOF > /etc/hosts
