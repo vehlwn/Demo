@@ -4,3 +4,4 @@ compile_commands.json
 .mypy_cache/
 .vim/
 .cache/
+/etc/iptables/user-init.sh
