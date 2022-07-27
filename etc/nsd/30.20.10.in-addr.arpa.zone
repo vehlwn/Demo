@@ -1,0 +1,11 @@
+$ORIGIN my-zone.lan.
+$TTL 3600
+30.20.10.in-addr.arpa. IN SOA ns hostmaster (
+	2022072718  ; serial number, date "+%Y%m%d%H"
+	28800       ; Refresh
+	7200        ; Retry
+	864000      ; Expire
+	3600        ; Negative response caching TTL, RFC 2308
+)
+1.30.20.10.in-addr.arpa.    IN      PTR    ns
+2.30.20.10.in-addr.arpa.    IN      PTR    venera
