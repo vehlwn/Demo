@@ -60,11 +60,11 @@ iptables -A INPUT -m addrtype --dst-type BROADCAST -j DROP
 readonly CLASS_D_MULTICAST="224.0.0.0/4"
 # Refuse Class D multicast addresses
 # illegal as a source address
-iptables -A INPUT -i enp0s5 -s "${CLASS_D_MULTICAST}" -j DROP
+iptables -A INPUT -s "${CLASS_D_MULTICAST}" -j DROP
 # Legitimate multicast packets are always UDP packets.
-iptables -A INPUT -i enp0s5 ! -p udp -d "${CLASS_D_MULTICAST}" -j DROP
+iptables -A INPUT ! -p udp -d "${CLASS_D_MULTICAST}" -j DROP
 # allow incoming multicast packets
-iptables -A INPUT -i enp0s5 -p udp -d "${CLASS_D_MULTICAST}" -j ACCEPT
+iptables -A INPUT -p udp -d "${CLASS_D_MULTICAST}" -j ACCEPT
 
 # Custom chain for user INPUT rules
 iptables --new-chain my-input
