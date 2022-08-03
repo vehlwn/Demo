@@ -8,6 +8,7 @@ required_packages=(
     mypy
     neovim
     numpy
+    opencv-python
     requests
     scipy
     sympy
