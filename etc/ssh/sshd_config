@@ -5,6 +5,7 @@ AcceptEnv LANG LC_*
 AllowUsers root vehlwn
 AuthenticationMethods publickey keyboard-interactive:pam
 ChallengeResponseAuthentication yes
+KbdInteractiveAuthentication yes
 DebianBanner no
 HostKey /etc/ssh/ssh_host_rsa_key
 LogLevel VERBOSE
