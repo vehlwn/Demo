@@ -19,5 +19,5 @@ Subsystem	sftp	/usr/lib/openssh/sftp-server
 TCPKeepAlive no
 UseDNS no
 UsePAM yes
-ClientAliveCountMax 0
-ClientAliveInterval 3600
+ClientAliveCountMax 3
+ClientAliveInterval 300
