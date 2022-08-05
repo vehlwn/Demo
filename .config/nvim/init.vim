@@ -54,6 +54,7 @@ nmap <leader>fq <Plug>(coc-fix-current)
 nmap <leader>rn <Plug>(coc-rename)
 nmap [g <Plug>(coc-diagnostic-prev)
 nmap ]g <Plug>(coc-diagnostic-next)
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 let g:coc_filetype_map = {
     \ 'jinja.html': 'html',
     \ }
