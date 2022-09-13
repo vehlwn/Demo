@@ -5,6 +5,7 @@
   "python.linting.pylintEnabled": false,
   "html.format.wrapLineLength": 85,
   "html.format.maxPreserveNewLines": 1,
+  "inlayHint.enable": false,
   "html.autoClosingTags": true,
   "rust-analyzer.updates.checkOnStartup": false,
   "rust-analyzer.server.path": "/usr/bin/rust-analyzer",
