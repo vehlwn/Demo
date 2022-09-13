@@ -209,3 +209,6 @@ focus_follows_mouse no
 
 bindsym --release Control+Shift+F1 exec --no-startup-id systemctl poweroff
 bindsym --release Control+Shift+F6 exec --no-startup-id systemctl reboot
+
+# Jump to urgent window
+bindsym $mod+x [urgent=latest] focus
