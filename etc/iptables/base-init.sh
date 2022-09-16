@@ -52,7 +52,7 @@ iptables -A INPUT -p icmp --icmp-type destination-unreachable -j ACCEPT
 # Time Exceeded Message (type 11)
 iptables -A INPUT -p icmp --icmp-type time-exceeded -j ACCEPT
 # Incoming ping echo message (Type 8)
-# iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
 # Refuse broadcasts
 iptables -A INPUT -m addrtype --dst-type BROADCAST -j DROP
