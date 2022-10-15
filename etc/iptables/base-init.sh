@@ -27,7 +27,7 @@ iptables -A my-log-portscan-drop -j DROP
 # Custom chain for conditional blocking by source IP with rate limiting
 iptables --new-chain my-limit
 iptables -A my-limit -m recent --set --rsource
-iptables -A my-limit -m recent --rcheck --seconds 600 --hitcount 10 --rsource -j my-log-limit-drop
+iptables -A my-limit -m recent --rcheck --seconds 30 --hitcount 6 --rsource -j my-log-limit-drop
 iptables -A my-limit -j ACCEPT
 
 # Unlimited traffic on the loopback interface
