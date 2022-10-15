@@ -19,6 +19,17 @@ iptables --new-chain my-log-limit-drop
 iptables -A my-log-limit-drop -m limit --limit 5/m --limit-burst 10 -j LOG --log-prefix "[IPT LIMIT] "
 iptables -A my-log-limit-drop -j DROP
 
+# Helper chain to configure port scan messages
+iptables --new-chain my-log-portscan-drop
+iptables -A my-log-portscan-drop -m limit --limit 5/m --limit-burst 10 -j LOG --log-prefix "[IPT PORT SCAN] "
+iptables -A my-log-portscan-drop -j DROP
+
+# Custom chain for conditional blocking by source IP with rate limiting
+iptables --new-chain my-limit
+iptables -A my-limit -m recent --set --rsource
+iptables -A my-limit -m recent --rcheck --seconds 600 --hitcount 10 --rsource -j my-log-limit-drop
+iptables -A my-limit -j ACCEPT
+
 # Unlimited traffic on the loopback interface
 iptables -A INPUT -i lo -j ACCEPT
 iptables -A OUTPUT -o lo -j ACCEPT
@@ -31,7 +42,7 @@ iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 # Port scan protection. Check portscan list and if a packet is in the list,
 # update last timestamp and block it.
-iptables -A INPUT -m recent --name portscan --update --hitcount 10 --seconds 600 -j my-log-limit-drop
+iptables -A INPUT -m recent --name portscan --update --hitcount 10 --seconds 600 -j my-log-portscan-drop
 
 # Four ICMP control and status messages (RFC 792) need to pass through the
 # firewall: Source Quench (deprecated by RFC 6633), Parameter Problem, incoming

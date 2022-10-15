@@ -3,7 +3,8 @@ set -o nounset
 set -o errexit
 
 # User input rules must be added in the "my-input" chain. Forward rules must be
-# added to "my-forward".
+# added to "my-forward". IP rate limiting rules must be added in the "my-limit"
+# chain.
 readonly UNPRIVPORTS="1024:65535"
 readonly UNPRIVPORTS_DASH="${UNPRIVPORTS/:/-}"
 
@@ -20,5 +21,5 @@ done
 iptables -A my-input -i wg0 -s 10.0.0.2 -j ACCEPT
 # wg0 client forward
 iptables -A my-forward -i wg0 -s 10.0.0.2 -j ACCEPT
-# ssh input
-iptables -A my-input -p tcp --sport "${UNPRIVPORTS}" --dport 22 -j ACCEPT
+# ssh limit
+iptables -A my-input -p tcp --sport "${UNPRIVPORTS}" --dport 22 -j my-limit
