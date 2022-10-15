@@ -12,9 +12,6 @@ iptables --policy FORWARD DROP
 # Custom chain to unconditionally log and block packtes
 iptables --new-chain my-block
 iptables -A my-block -m limit --limit 5/m --limit-burst 10 -j LOG --log-prefix "[IPT BLOCK] "
-# Port scan (contd). If a packet does not match any rule in the my-input chain,
-# add it to the list.
-iptables -A my-block -m recent --name portscan --set
 iptables -A my-block -j DROP
 
 # Helper chain to configure LIMIT messages
@@ -70,6 +67,9 @@ iptables -A INPUT -p udp -d "${CLASS_D_MULTICAST}" -j ACCEPT
 # Custom chain for user INPUT rules
 iptables --new-chain my-input
 iptables -A INPUT -j my-input
+# Port scan (contd). If a packet does not match any rule in the my-input chain,
+# add it to the list.
+iptables -A INPUT -m recent --name portscan --set
 iptables -A INPUT -j my-block
 
 # Custom chain for user FORWARD rules
