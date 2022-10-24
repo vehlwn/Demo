@@ -1,0 +1,17 @@
+; RFC 3152: Delegation of IP6.ARPA
+; RFC 1886: 2.5 IP6.INT Domain
+;
+; from ipaddress import ip_address
+; ".".join("{:x}".format(ip_address("fdxx:xxxx:xxxx:xxxx::1"))[::-1])
+
+$ORIGIN my-zone.lan.
+$TTL 3600
+0.0.0.0.0.0.0.0.0.0.0.0.0.0.x.x.x.x.x.x.x.x.x.x.x.x.x.x.d.f.ip6.arpa. IN SOA ns hostmaster (
+	2022102415  ; serial number, date "+%Y%m%d%H"
+	28800       ; Refresh
+	7200        ; Retry
+	864000      ; Expire
+	3600        ; Negative response caching TTL, RFC 2308
+)
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.x.x.x.x.x.x.x.x.x.x.x.x.x.x.d.f.ip6.arpa. IN PTR ns
+1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.x.x.x.x.x.x.x.x.x.x.x.x.x.x.d.f.ip6.arpa. IN PTR venera
