@@ -40,6 +40,7 @@ iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A FORWARD -m conntrack --ctstate INVALID -j my-block
 iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
+# https://ru.wikibooks.org/wiki/Iptables#%D0%9A%D1%80%D0%B8%D1%82%D0%B5%D1%80%D0%B8%D0%B9_recent
 # Port scan protection. Check portscan list and if a packet is in the list,
 # update last timestamp and block it.
 iptables -A INPUT -m recent --name portscan --update --hitcount 10 --seconds 600 -j my-log-portscan-drop
