@@ -1,0 +1,99 @@
+#!/usr/bin/nft -f
+
+include "/etc/nftables/reset.nft"
+
+table inet filter {
+    include "/etc/nftables/log_messages.nft"
+    include "/etc/nftables/limit_lists.nft"
+    include "/etc/nftables/portscan_lists.nft"
+    include "/etc/nftables/user_filter.nft"
+
+    chain INPUT {
+        type filter hook input priority filter
+        policy drop
+
+        iifname "lo" counter accept comment "Unlimited traffic on the loopback interface"
+
+        ct state invalid counter jump my_block comment "Early drop of invalid connections"
+        ct state established,related counter accept comment "Allow established sessions"
+
+        # Port scan protection. Check portscan list and if a packet is in the
+        # list, update last timestamp and block it.
+        ip saddr @_portscan_blacklist_v4 \
+            update @_portscan_blacklist_v4 { ip saddr } \
+            counter jump _log_portscan_drop
+        ip6 saddr @_portscan_blacklist_v6 \
+            update @_portscan_blacklist_v6 { ip6 saddr } \
+            counter jump _log_portscan_drop
+
+        icmp type {
+            destination-unreachable,
+            echo-request,
+            parameter-problem,
+            time-exceeded,
+        } counter accept
+
+        icmpv6 type {
+            destination-unreachable,
+            echo-request,
+            ind-neighbor-advert,
+            ind-neighbor-solicit,
+            mld-listener-query,
+            mld-listener-reduction,
+            mld-listener-report,
+            mld2-listener-report,
+            nd-neighbor-advert,
+            nd-neighbor-solicit,
+            nd-router-advert,
+            nd-router-solicit,
+            packet-too-big,
+            parameter-problem,
+            time-exceeded,
+        } counter accept
+
+        fib daddr type broadcast counter drop comment "Refuse broadcasts"
+        ip protocol udp ip daddr 224.0.0.0/4 \
+            counter accept comment "Allow incoming multicast packets"
+
+        counter jump my_input
+
+        # Port scan (contd). If a packet does not match any rule in the
+        # my_input chain, add it to the list.
+        update @_portscan_flood_list_v4 { ip saddr limit rate over 5/minute } \
+            add @_portscan_blacklist_v4 { ip saddr}
+        update @_portscan_flood_list_v6 { ip6 saddr limit rate over 5/minute } \
+            add @_portscan_blacklist_v6 { ip6 saddr}
+
+        counter jump my_block
+    }
+
+    chain FORWARD {
+        type filter hook forward priority filter
+        policy drop
+
+        ct state invalid counter jump my_block comment "Early drop of invalid connections"
+        ct state established,related counter accept comment "Allow established sessions"
+        counter jump my_forward
+        counter jump my_block
+    }
+
+    chain OUTPUT {
+        type filter hook output priority filter
+        policy accept
+
+        oifname "lo" counter accept comment "Unlimited traffic on the loopback interface"
+        counter
+    }
+}
+
+table inet nat {
+    include "/etc/nftables/user_nat.nft"
+
+    chain POSTROUTING {
+        type nat hook postrouting priority srcnat
+        policy accept
+
+        counter jump my_nat_postrouting
+        counter
+    }
+}

@@ -1,0 +1,19 @@
+#!/usr/bin/nft -f
+
+limit _log_limit {
+    rate 5/minute burst 10 packets
+}
+chain _log_limit_drop {
+    limit name "_log_limit" log prefix "[NFT LIMIT] " counter
+    counter drop
+}
+chain _log_portscan_drop {
+    limit name "_log_limit" log prefix "[NFT PORTSCAN] " counter
+    counter drop
+}
+chain my_block {
+    comment "Custom chain to unconditionally log and block packtes"
+    limit name "_log_limit" log prefix "[NFT BLOCK] " counter
+    counter drop
+}
+

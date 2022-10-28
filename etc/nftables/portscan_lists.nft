@@ -1,0 +1,27 @@
+#!/usr/bin/nft -f
+
+set _portscan_blacklist_v4{
+    type ipv4_addr
+    flags dynamic
+    timeout 30m
+    size 500000
+}
+set _portscan_flood_list_v4{
+    type ipv4_addr
+    flags dynamic
+    timeout 10m
+    size 500000
+}
+
+set _portscan_blacklist_v6{
+    type ipv6_addr
+    flags dynamic
+    timeout 30m
+    size 500000
+}
+set _portscan_flood_list_v6{
+    type ipv6_addr
+    flags dynamic
+    timeout 10m
+    size 500000
+}

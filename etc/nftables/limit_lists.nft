@@ -1,0 +1,50 @@
+#!/usr/bin/nft -f
+
+set _limit_blacklist_v4{
+    type ipv4_addr
+    flags dynamic
+    timeout 2m
+    size 500000
+}
+set _limit_flood_list_v4{
+    type ipv4_addr
+    flags dynamic
+    timeout 1m
+    size 500000
+}
+chain _limit_v4 {
+    # https://wiki.nftables.org/wiki-nftables/index.php/Updating_sets_from_the_packet_path
+    # https://man.archlinux.org/man/nft.8#SET_STATEMENT
+    ip saddr @_limit_blacklist_v4 \
+        update @_limit_blacklist_v4 { ip saddr } \
+        counter jump _log_limit_drop
+    update @_limit_flood_list_v4 { ip saddr limit rate over 10/minute } \
+        add @_limit_blacklist_v4 { ip saddr}
+    counter accept
+}
+
+set _limit_blacklist_v6{
+    type ipv6_addr
+    flags dynamic
+    timeout 2m
+    size 500000
+}
+set _limit_flood_list_v6{
+    type ipv6_addr
+    flags dynamic
+    timeout 1m
+    size 500000
+}
+chain _limit_v6 {
+    ip6 saddr @_limit_blacklist_v6 \
+        update @_limit_blacklist_v6 { ip6 saddr } \
+        counter jump _log_limit_drop
+    update @_limit_flood_list_v6 { ip6 saddr limit rate over 10/minute } \
+        add @_limit_blacklist_v6 { ip6 saddr}
+    counter accept
+}
+
+chain my_limit {
+    comment "Custom chain for conditional blocking by source IP with rate limiting"
+    counter meta nfproto vmap { ipv4 : jump _limit_v4, ipv6 : jump _limit_v6}
+}

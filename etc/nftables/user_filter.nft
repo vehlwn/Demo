@@ -1,0 +1,28 @@
+#!/usr/bin/nft -f
+
+chain my_input {
+    comment "Custom chain for user filter INPUT rules"
+
+    define UNPRIVPORTS = 1024-65535
+
+    iifname "enp0s5" \
+        udp sport $UNPRIVPORTS udp dport 443 \
+        counter accept comment "wg0 listening port"
+
+    iifname "wg0" ip saddr 10.0.0.1 meta l4proto {tcp, udp} th dport { 53 } \
+        counter accept comment "wg0 client1 DNS input"
+
+    tcp sport $UNPRIVPORTS tcp dport 22 counter jump my_limit comment "ssh limit"
+
+    iifname "enp0s5" tcp sport $UNPRIVPORTS tcp dport {80, 443} \
+        counter accept comment "nginx ssl"
+}
+
+chain my_forward {
+    comment "Custom chain for user filter FORWARD rules"
+
+    iifname "wg0" ip saddr 10.0.0.1 oifname "enp0s5" \
+        counter accept comment "wg0 client1 forward"
+    iifname "wg0" ip saddr 10.0.0.2 ip daddr 8.8.8.8 \
+        counter jump my_block comment "wg0 client2 block forward to google dns"
+}
