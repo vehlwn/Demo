@@ -9,7 +9,8 @@ chain my_input {
         udp sport $UNPRIVPORTS udp dport 443 \
         counter accept comment "wg0 listening port"
 
-    iifname "wg0" ip saddr 10.0.0.1 meta l4proto {tcp, udp} th dport { 53 } \
+    iifname "wg0" ip saddr 10.0.0.1 meta l4proto {tcp, udp} \
+        th sport $UNPRIVPORTS th dport { 53 } \
         counter accept comment "wg0 client1 DNS input"
 
     tcp sport $UNPRIVPORTS tcp dport 22 counter jump my_limit comment "ssh limit"
