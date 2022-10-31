@@ -5,13 +5,11 @@ chain my_nat_postrouting {
 
     define UNPRIVPORTS = 1024-65535
 
-    meta nfproto ipv4 \
-        iifname "wg0" oifname "enp0s5" \
+    meta nfproto ipv4 oifname "enp0s5" \
         meta l4proto { tcp, udp } \
         counter snat ip to 60.50.40.30:$UNPRIVPORTS comment "wg0 SNAT"
 
-    meta nfproto ipv6 \
-        iifname "wg0" oifname "enp0s5" \
+    meta nfproto ipv6 oifname "enp0s5" \
         meta l4proto { tcp, udp } \
         counter snat ip6 to [2030::]:$UNPRIVPORTS comment "wg0 SNAT"
 }
