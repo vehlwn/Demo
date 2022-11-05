@@ -15,6 +15,10 @@ function cleanup()
         umount "/mnt/${MAPPING_NAME}"
         cryptsetup close "${MAPPING_NAME}"
     fi
+    if [ "${SUCCESS}" == "0" ]; then
+        echo "Failed to create backup. Removing ${BACKUP_PATH}..."
+        rm --recursive "${BACKUP_PATH}"
+    fi
 }
 trap cleanup EXIT
 
@@ -28,10 +32,11 @@ if [ ! -e "/dev/mapper/${MAPPING_NAME}" ]; then
 fi
 
 readonly BACKUP_DIR="/mnt/${MAPPING_NAME}/backup"
-readonly OPTS="--archive --acls --xattrs --human-readable --partial --one-file-system --delete --progress --verbose"
+readonly OPTS="--archive --human-readable -hh --one-file-system --delete --progress --verbose"
 readonly DATETIME="$(date '+%Y-%m-%dT%H:%M:%S')"
 readonly BACKUP_PATH="${BACKUP_DIR}/${DATETIME}"
 readonly LATEST_LINK="${BACKUP_DIR}/latest"
+SUCCESS="0"
 
 mkdir -p "${BACKUP_DIR}"
 rsync ${OPTS} \
@@ -39,3 +44,4 @@ rsync ${OPTS} \
   ${SOURCE_DIR} \
   "${BACKUP_PATH}"
 ln --symbolic --force --no-target-directory "${BACKUP_PATH}" "${LATEST_LINK}"
+SUCCESS="1"
