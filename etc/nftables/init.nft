@@ -52,7 +52,7 @@ table inet filter {
         } counter accept
 
         fib daddr type broadcast counter drop comment "Refuse broadcasts"
-        ip protocol udp ip daddr 224.0.0.0/4 \
+        meta l4proto udp fib daddr type multicast \
             counter accept comment "Allow incoming multicast packets"
 
         counter jump my_input
