@@ -11,4 +11,5 @@ $TTL 3600
 @          IN     NS   ns
 ns         IN     A        10.20.30.1
 venera     IN     A        10.20.30.1
+*.venera   IN     CNAME    venera
 venera     IN     AAAA     fdxx:xxxx:xxxx:xxxx::1
