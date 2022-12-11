@@ -51,6 +51,7 @@ table inet filter {
             time-exceeded,
         } counter accept
 
+        fib daddr type broadcast counter jump my_broadcast_input
         fib daddr type broadcast counter drop comment "Refuse broadcasts"
         meta l4proto udp fib daddr type multicast \
             counter accept comment "Allow incoming multicast packets"

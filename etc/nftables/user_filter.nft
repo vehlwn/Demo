@@ -17,6 +17,18 @@ chain my_input {
 
     iifname "enp0s5" tcp sport $UNPRIVPORTS tcp dport {80, 443} \
         counter accept comment "nginx ssl"
+
+    iifname "libvirt-br0" meta l4proto {tcp, udp} th dport 53 \
+        counter accept comment "libvirt-br0 DNS"
+    iifname "libvirt-br0" meta l4proto udp th sport 68 th dport 67 \
+        counter accept comment "libvirt-br0 DHCP unicast"
+}
+
+chain my_broadcast_input {
+    comment "Custom chain for user filter INPUT broadcast rules"
+
+    iifname "libvirt-br0" meta l4proto udp th sport 68 th dport 67 \
+        counter accept comment "libvirt-br0 DHCP broadcast"
 }
 
 chain my_forward {
@@ -26,4 +38,5 @@ chain my_forward {
         counter accept comment "wg0 client1 forward"
     iifname "wg0" ip saddr 10.0.0.2 ip daddr 8.8.8.8 \
         counter jump my_block comment "wg0 client2 block forward to google dns"
+    iifname "libvirt-br0" counter accept comment "outbound traffic from libvirt-br0"
 }
