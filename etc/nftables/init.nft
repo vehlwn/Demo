@@ -14,7 +14,7 @@ table inet filter {
 
         iifname "lo" counter accept comment "Unlimited traffic on the loopback interface"
 
-        ct state invalid counter jump my_block comment "Early drop of invalid connections"
+        ct state invalid counter jump _log_invalid_drop comment "Early drop of invalid connections"
         ct state established,related counter accept comment "Allow established sessions"
 
         # Port scan protection. Check portscan list and if a packet is in the
@@ -72,7 +72,7 @@ table inet filter {
         type filter hook forward priority filter
         policy drop
 
-        ct state invalid counter jump my_block comment "Early drop of invalid connections"
+        ct state invalid counter jump _log_invalid_drop comment "Early drop of invalid connections"
         ct state established,related counter accept comment "Allow established sessions"
         counter jump my_forward
         counter jump my_block

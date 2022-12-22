@@ -11,6 +11,10 @@ chain _log_portscan_drop {
     limit name "_log_limit" log prefix "[NFT PORTSCAN] " counter
     counter drop
 }
+chain _log_invalid_drop {
+    limit name "_log_limit" log prefix "[NFT INVALID] " counter
+    counter drop
+}
 chain my_block {
     comment "Custom chain to unconditionally log and block packtes"
     limit name "_log_limit" log prefix "[NFT BLOCK] " counter
