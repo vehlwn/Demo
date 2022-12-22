@@ -56,6 +56,7 @@ GRUB_COLOR_HIGHLIGHT="white/red"
 GRUB_COLOR_NORMAL="white/blue"
 ...
 
+# grub-install --target=i386-pc /dev/sda
 grub-install
 grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
