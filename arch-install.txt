@@ -41,7 +41,8 @@ EOF
 
 nvim /etc/mkinitcpio.conf
 ...
-HOOKS=(base udev autodetect keyboard keymap consolefont modconf block encrypt lvm2 filesystems fsck)
+HOOKS=(base **udev** autodetect modconf kms **keyboard keymap** consolefont block **encrypt lvm2** filesystems fsck)
+
 ...
 
 mkinitcpio -P
