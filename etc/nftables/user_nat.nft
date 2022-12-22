@@ -17,9 +17,9 @@ chain my_nat_postrouting {
 
     meta nfproto ipv6 oifname $WG0_SNAT_OIFNAME \
         meta l4proto { tcp, udp } \
-        counter snat ip6 to $WG0_SNAT_TARGET_V6:$UNPRIVPORTS comment "wg0 SNAT for tcp, udp"
+        counter snat ip6 to $WG0_SNAT_TARGET_V6:$UNPRIVPORTS comment "wg0 SNAT v6 for tcp, udp"
     meta nfproto ipv6 oifname $WG0_SNAT_OIFNAME \
-        counter snat ip6 to $WG0_SNAT_TARGET_V6 comment "wg0 SNAT for other L4 protocols"
+        counter snat ip6 to $WG0_SNAT_TARGET_V6 comment "wg0 SNAT v6 for other L4 protocols"
 
     iifname "libvirt-br0" meta l4proto { tcp, udp } \
         counter masquerade to :$UNPRIVPORTS comment "libvirt-br0 SNAT for tcp, udp"
