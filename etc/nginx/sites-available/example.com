@@ -18,6 +18,7 @@ server {
     }
 
     # sudo certbot certonly -d "*.example.com" --preferred-challenges=dns --must-staple --manual
+    # sudo certbot certonly -d "example.com" --must-staple --standalone --no-eff-email
     ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
     # verify chain of trust of OCSP response using Root CA and Intermediate certs
