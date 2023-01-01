@@ -9,7 +9,7 @@ vgcreate vg /dev/mapper/cryptlvm
 lvcreate -L 40G vg -n root
 lvcreate -L 2G vg -n swap
 lvcreate -l 100%FREE vg -n home
-mkfs.fat /dev/vda1
+mkfs.fat -F32 /dev/vda1
 mkfs.ext4 /dev/vg/root
 mkfs.ext4 /dev/vg/home
 mkswap /dev/vg/swap
