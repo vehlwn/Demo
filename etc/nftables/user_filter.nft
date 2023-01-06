@@ -1,5 +1,11 @@
 #!/usr/bin/nft -f
 
+define WG0_CLIENT1_V4 = 10.0.0.1
+define WG0_CLIENT1_V6 = fd11:2233:4455:6677::1
+
+define WG0_CLIENT2_V4 = 10.0.0.2
+define WG0_CLIENT2_V6 = fd11:2233:4455:6677::2
+
 chain my_input {
     comment "Custom chain for user filter INPUT rules"
 
@@ -9,9 +15,17 @@ chain my_input {
         udp sport $UNPRIVPORTS udp dport 443 \
         counter accept comment "wg0 listening port"
 
-    iifname "wg0" ip saddr 10.0.0.1 meta l4proto {tcp, udp} \
+    iifname "wg0" ip saddr $WG0_CLIENT1_V4 \
+        counter accept comment "wg0 client1 input"
+    iifname "wg0" ip6 saddr $WG0_CLIENT1_V6 \
+        counter accept comment "wg0 client1 input v6"
+
+    iifname "wg0" ip saddr $WG0_CLIENT2_V4 meta l4proto {tcp, udp} \
         th sport $UNPRIVPORTS th dport 53 \
-        counter accept comment "wg0 client1 DNS input"
+        counter accept comment "wg0 client2 DNS input"
+    iifname "wg0" ip6 saddr WG0_CLIENT2_V6 meta l4proto {tcp, udp} \
+        th sport $UNPRIVPORTS th dport 53 \
+        counter accept comment "wg0 client2 DNS input"
 
     tcp sport $UNPRIVPORTS tcp dport 22 counter jump my_limit comment "ssh limit"
 
@@ -34,9 +48,9 @@ chain my_broadcast_input {
 chain my_forward {
     comment "Custom chain for user filter FORWARD rules"
 
-    iifname "wg0" ip saddr 10.0.0.1 oifname "enp0s5" \
+    iifname "wg0" ip saddr $WG0_CLIENT1_V4 oifname "enp0s5" \
         counter accept comment "wg0 client1 forward"
-    iifname "wg0" ip saddr 10.0.0.2 ip daddr 8.8.8.8 \
+    iifname "wg0" ip saddr $WG0_CLIENT2_V4 ip daddr 8.8.8.8 \
         counter jump my_block comment "wg0 client2 block forward to google dns"
     iifname "libvirt-br0" counter accept comment "outbound traffic from libvirt-br0"
 }
