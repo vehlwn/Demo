@@ -19,7 +19,7 @@ mkdir -p /mnt/boot/efi
 mount /dev/vda1 /mnt/boot/efi
 mkdir -p /mnt/home
 mount /dev/vg/home /mnt/home
-# pacman -Sy archlinux-keyring
+# pacman -Suy archlinux-keyring
 pacstrap -K /mnt base linux linux-firmware neovim cpio cryptsetup lvm2 efibootmgr git grub man-pages net-tools networkmanager sudo
 # alacritty base-devel bc bison breeze-icons clang cmake cups hplip libc++
 # lxappearance ninja noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra
