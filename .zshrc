@@ -22,7 +22,7 @@ SAVEHIST=100000
 export PATH=$PATH:$HOME/.local/bin
 export EDITOR=/usr/bin/nvim
 export FZF_DEFAULT_COMMAND="find -L"
-export DXVK_HUD=fps,memory,gpuload
+export DXVK_HUD=fps,memory,gpuload,api
 export GTK_USE_PORTAL=1
 
 alias sudo='sudo --validate && sudo '
