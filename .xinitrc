@@ -24,6 +24,11 @@ case $session in
     xfce|xfce4)
         exec startxfce4
         ;;
+    gnome)
+        export XDG_SESSION_TYPE=x11
+        export GDK_BACKEND=x11
+        exec gnome-session
+        ;;
     *) # No known session, try to run it as command
         exec $1
         ;;
