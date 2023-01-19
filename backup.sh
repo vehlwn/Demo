@@ -10,12 +10,12 @@ set -o nounset
 
 function cleanup()
 {
-    if [ "${SHOULD_UMOUNT}" == "1" ]; then
+    if [ "${SHOULD_UMOUNT}" = "1" ]; then
         echo "Umounting..."
         umount "/mnt/${MAPPING_NAME}"
         cryptsetup close "${MAPPING_NAME}"
     fi
-    if [ "${SUCCESS}" == "0" ]; then
+    if [ "${SUCCESS}" = "0" ]; then
         echo "Failed to create backup. Removing ${BACKUP_PATH}..."
         rm --recursive "${BACKUP_PATH}"
     fi
