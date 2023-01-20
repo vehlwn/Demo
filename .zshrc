@@ -5,6 +5,10 @@ promptinit
 zstyle ':completion:*' menu select
 prompt adam1
 
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
 
@@ -34,10 +38,6 @@ bindkey '^[[B' history-substring-search-down
 
 unsetopt BEEP
 setopt APPEND_HISTORY EXTENDED_HISTORY HIST_IGNORE_ALL_DUPS HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS INC_APPEND_HISTORY SHARE_HISTORY CORRECT
-
-HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
 
 typeset -U path
 path=($path "${HOME}/.local/bin")
