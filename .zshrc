@@ -47,6 +47,6 @@ export FZF_DEFAULT_COMMAND="find -L"
 export DXVK_HUD=fps,memory,gpuload,api
 export GTK_USE_PORTAL=1
 
-alias sudo='sudo --validate && sudo '
-alias l='ls -lah --color=auto --group-directories-first --classify'
+alias sudo='command sudo --validate && command sudo '
+alias l='command ls -lah --color=auto --group-directories-first --classify'
 alias ip='command ip -color=auto'
