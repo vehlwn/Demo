@@ -14,6 +14,9 @@ HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
 
+# zsh-users/zsh-history-substring-search
+HISTORY_SUBSTRING_SEARCH_PREFIXED=1
+
 source '/usr/share/zsh-antidote/antidote.zsh'
 antidote load
 
