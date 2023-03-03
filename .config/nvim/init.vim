@@ -97,7 +97,7 @@ set cmdheight=2
 set colorcolumn=80
 set copyindent
 set cursorline
-set directory=~/.vim/swap
+set directory=~/.vim/swap//
 set expandtab
 set fileencoding=utf-8
 set fileencodings=utf8,koi8r,cp1251,cp866,ucs-2le
