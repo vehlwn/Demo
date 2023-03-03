@@ -91,6 +91,8 @@ autocmd BufReadPost *
     \ |   exe "normal! g`\""
     \ | endif
 
+autocmd BufWritePre /tmp/* setlocal noundofile
+
 set autoindent
 set autoread
 set cmdheight=2
@@ -121,7 +123,7 @@ set smartindent
 set smarttab
 set tabstop=4
 set termguicolors
-set undodir=~/.vim/undo
+set undodir=~/.vim/undo//
 set undofile
 set undolevels=10000
 set updatetime=300
