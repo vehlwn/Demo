@@ -36,6 +36,7 @@ map <F4> :write!<CR>:FSHere<CR>
 " Rainbow brackets options
 let g:rainbow_active = 1
 let g:rainbow_conf = {
+\   'guifgs': ['Red', 'LightGreen', 'Yellow', 'Cyan', 'Orange', 'White'],
 \   'separately': {
 \       'cmake': 0,
 \   }
