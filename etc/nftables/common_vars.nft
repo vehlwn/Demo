@@ -1,0 +1,9 @@
+#!/usr/bin/nft -f
+
+define UNPRIVPORTS = 1024-65535
+
+define WG0_CLIENT1_V4 = 10.0.0.1
+define WG0_CLIENT1_V6 = fd11:2233:4455:6677::1
+
+define WG0_CLIENT2_V4 = 10.0.0.2
+define WG0_CLIENT2_V6 = fd11:2233:4455:6677::2

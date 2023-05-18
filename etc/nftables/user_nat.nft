@@ -3,8 +3,6 @@
 chain my_nat_postrouting {
     comment "Custom chain for user nat POSTROUTING rules"
 
-    define UNPRIVPORTS = 1024-65535
-
     define WG0_SNAT_OIFNAME = "enp0s5"
     define WG0_SNAT_TARGET_V4 = 60.50.40.30
     define WG0_SNAT_TARGET_V6 = [2030::]

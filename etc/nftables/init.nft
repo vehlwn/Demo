@@ -1,6 +1,7 @@
 #!/usr/bin/nft -f
 
 include "/etc/nftables/reset.nft"
+include "/etc/nftables/common_vars.nft"
 
 table inet filter {
     include "/etc/nftables/log_messages.nft"
