@@ -31,7 +31,7 @@ nmap <C-p> :FZF<CR>
 
 " vim-fswitch options
 " Use F4 key as in QtCreator. (Toggle header and cpp files)
-map <F4> :write!<CR>:FSHere<CR>
+map <F4> :FSHere<CR>
 
 " Rainbow brackets options
 let g:rainbow_active = 1
