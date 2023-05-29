@@ -1,0 +1,17 @@
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/mapper/vg-root
+UUID=...	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p5
+UUID=...	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/mapper/vg-home
+UUID=...	/home     	ext4      	rw,relatime	0 2
+
+# /dev/mapper/vg-swap
+UUID=...	none      	swap      	defaults  	0 0
+/swapfile none swap sw 0 0
+
+UUID=...   /mnt/c   ntfs-3g   defaults,uid=vehlwn,gid=vehlwn,umask=022  0  2
+
+proc	/proc	proc	nosuid,nodev,noexec,hidepid=2,gid=proc	0	0
