@@ -18,4 +18,4 @@ ffmpeg \
         ,hwupload
         " \
     - \
-    | cvlc -I dummy - --sout '#rtp{sdp=rtsp://0.0.0.0:5000/,proto=udp}'
+    | cvlc -I dummy - --sout '#rtp{sdp=rtsp://:5000/,proto=udp}'
