@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly SOURCE_DIR="/mnt/e/1/0 /home/vehlwn"
+readonly SOURCE_DIR="/mnt/e/1/0 /home/vehlwn /etc"
 readonly LUKS_DEVICE="/dev/sda3"
 readonly MAPPING_NAME="cryptbackup"
 
