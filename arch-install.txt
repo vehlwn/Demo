@@ -72,7 +72,7 @@ cryptsetup luksAddKey /dev/vda2 /root/cryptboot.keyfile
 cryptboot UUID=.... /root/cryptboot.keyfile
 
 systemctl enable systemd-networkd systemd-resolved
-ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
 cat << EOF > /etc/systemd/network/ethernet.network
 [Match]
