@@ -64,9 +64,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable systemd-networkd systemd-resolved
 ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
-cat << EOF > /etc/systemd/network/enp1s0.network
+cat << EOF > /etc/systemd/network/ethernet.network
 [Match]
-Name = enp1s0
+Name = en*
+Name = eth*
 [Network]
 DHCP = yes
 EOF
