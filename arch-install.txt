@@ -61,6 +61,16 @@ GRUB_COLOR_NORMAL="white/blue"
 grub-install --efi-directory=/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
+# Alternative with separate encrypted boot partition:
+dd if=/dev/urandom of=/root/cryptboot.keyfile bs=256 count=1
+cryptsetup luksAddKey /dev/vda2 /root/cryptboot.keyfile
+
+> /etc/fstab:
+/dev/mapper/cryptboot   /boot           ext4            rw,relatime     0 2
+
+> /etc/crypttab:
+cryptboot UUID=.... /root/cryptboot.keyfile
+
 systemctl enable systemd-networkd systemd-resolved
 ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
 
