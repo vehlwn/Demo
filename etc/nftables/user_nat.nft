@@ -3,6 +3,6 @@
 chain my_nat_postrouting {
     comment "Custom chain for user nat POSTROUTING rules"
 
-    meta l4proto { tcp, udp } counter masquerade to : $UNPRIVPORTS
-    counter masquerade
+    fib saddr type != local meta l4proto { tcp, udp } counter masquerade to : $UNPRIVPORTS
+    fib saddr type != local counter masquerade
 }
