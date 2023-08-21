@@ -3,24 +3,6 @@
 chain my_nat_postrouting {
     comment "Custom chain for user nat POSTROUTING rules"
 
-    define WG0_SNAT_OIFNAME = "enp0s5"
-    define WG0_SNAT_TARGET_V4 = 60.50.40.30
-    define WG0_SNAT_TARGET_V6 = [2030::]
-
-    meta nfproto ipv4 iifname "wg0" oifname $WG0_SNAT_OIFNAME \
-        meta l4proto { tcp, udp } \
-        counter snat ip to $WG0_SNAT_TARGET_V4:$UNPRIVPORTS comment "wg0 SNAT for tcp, udp"
-    meta nfproto ipv4 iifname "wg0" oifname $WG0_SNAT_OIFNAME \
-        counter snat ip to $WG0_SNAT_TARGET_V4 comment "wg0 SNAT for other L4 protocols"
-
-    meta nfproto ipv6 iifname "wg0" oifname $WG0_SNAT_OIFNAME \
-        meta l4proto { tcp, udp } \
-        counter snat ip6 to $WG0_SNAT_TARGET_V6:$UNPRIVPORTS comment "wg0 SNAT v6 for tcp, udp"
-    meta nfproto ipv6 iifname "wg0" oifname $WG0_SNAT_OIFNAME \
-        counter snat ip6 to $WG0_SNAT_TARGET_V6 comment "wg0 SNAT v6 for other L4 protocols"
-
-    iifname "libvirt-br0" meta l4proto { tcp, udp } \
-        counter masquerade to :$UNPRIVPORTS comment "libvirt-br0 SNAT for tcp, udp"
-    iifname "libvirt-br0" \
-        counter masquerade comment "libvirt-br0 SNAT for other L4 protocols"
+    meta l4proto { tcp, udp } counter masquerade to : $UNPRIVPORTS
+    counter masquerade
 }
