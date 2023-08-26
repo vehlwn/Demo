@@ -1,0 +1,13 @@
+[Match]
+Name = wg0
+
+[Network]
+Address = 10.20.30.2/24
+Address = fd11:2233:4455:6677::2/64
+
+[Route]
+Destination = 192.168.102.0/24
+Scope = link
+
+[Route]
+Gateway = fd11:2233:4455:6677::2

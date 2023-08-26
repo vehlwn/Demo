@@ -1,0 +1,6 @@
+[Match]
+Name = libvirt-br0
+
+[Network]
+Address = 10.20.30.1/24
+Address = fd::1/64

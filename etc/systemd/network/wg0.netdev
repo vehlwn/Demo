@@ -1,0 +1,14 @@
+[NetDev]
+Name = wg0
+Kind = wireguard
+
+[WireGuard]
+PrivateKey = ...
+
+# peer 1
+[WireGuardPeer]
+PublicKey = ...
+PresharedKey = ...
+AllowedIPs = 10.20.30.0/24, fd11:2233:4455:6677::/64, ::/0, 192.168.102.0/24
+Endpoint = ...
+PersistentKeepalive = 25
