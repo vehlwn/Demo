@@ -3,6 +3,11 @@ compinit
 promptinit
 
 zstyle ':completion:*' menu select
+zstyle ':completion:*' completer _complete _approximate
+zstyle ':completion:*' matcher-list \
+    '' \
+    'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' \
+    'l:|=* r:|=*'
 
 source ~/.zsh/aliases.zsh
 source ~/.zsh/exports.zsh
