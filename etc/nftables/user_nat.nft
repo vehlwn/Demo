@@ -1,8 +1,13 @@
 #!/usr/bin/nft -f
 
+chain _masquerade_impl {
+    meta l4proto { tcp, udp } counter masquerade to : $UNPRIVPORTS
+    counter masquerade
+}
+
 chain my_nat_postrouting {
     comment "Custom chain for user nat POSTROUTING rules"
 
-    fib saddr type != local meta l4proto { tcp, udp } counter masquerade to : $UNPRIVPORTS
-    fib saddr type != local counter masquerade
+    iifname "libvirt-br0" oifname "wlan0" counter jump _masquerade_impl
+    iifname "libvirt-br0" oifname "wg0" counter jump _masquerade_impl
 }
