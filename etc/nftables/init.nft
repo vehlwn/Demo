@@ -9,6 +9,11 @@ table inet filter {
     include "/etc/nftables/portscan_lists.nft"
     include "/etc/nftables/user_filter.nft"
 
+    chain _handle_broadcast {
+        counter jump my_broadcast_input
+        counter drop comment "Refuse broadcasts"
+    }
+
     chain INPUT {
         type filter hook input priority filter
         policy drop
@@ -17,6 +22,8 @@ table inet filter {
 
         ct state invalid counter jump _log_invalid_drop comment "Early drop of invalid connections"
         ct state established,related counter accept comment "Allow established sessions"
+
+        fib daddr type broadcast counter jump _handle_broadcast
 
         # Port scan protection. Check portscan list and if a packet is in the
         # list, update last timestamp and block it.
@@ -52,8 +59,6 @@ table inet filter {
             time-exceeded,
         } counter accept
 
-        fib daddr type broadcast counter jump my_broadcast_input
-        fib daddr type broadcast counter drop comment "Refuse broadcasts"
         meta l4proto udp fib daddr type multicast \
             counter accept comment "Allow incoming multicast packets"
 
