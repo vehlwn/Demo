@@ -103,4 +103,12 @@ table inet nat {
         counter jump my_nat_postrouting
         counter
     }
+
+    chain PREROUTING {
+        type nat hook prerouting priority dstnat
+        policy accept
+
+        counter jump my_nat_prerouting
+        counter
+    }
 }

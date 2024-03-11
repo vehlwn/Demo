@@ -10,4 +10,13 @@ chain my_nat_postrouting {
 
     iifname "libvirt-br0" oifname "wlan0" counter jump _masquerade_impl
     iifname "libvirt-br0" oifname "wg0" counter jump _masquerade_impl
+
+    iifname $PUBLIC_ETH oifname "wg0" \
+        udp sport $UNPRIVPORTS udp dport $APP_PORT \
+        counter jump _masquerade_impl comment "app dnat"
+}
+
+chain my_nat_prerouting {
+    iifname $PUBLIC_ETH udp sport $UNPRIVPORTS udp dport $APP_PORT \
+        counter dnat ip to 10.0.0.2 comment "app dnat"
 }

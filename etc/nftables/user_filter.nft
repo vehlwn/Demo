@@ -45,4 +45,7 @@ chain my_forward {
     iifname "wg0" ip saddr $WG0_CLIENT2_V4 ip daddr 8.8.8.8 \
         counter jump my_block comment "wg0 client2 block forward to google dns"
     iifname "libvirt-br0" counter accept comment "outbound traffic from libvirt-br0"
+
+    iifname $PUBLIC_ETH ip daddr 10.0.0.2 udp sport $UNPRIVPORTS udp dport $APP_PORT \
+        counter accept comment "app dnat"
 }
