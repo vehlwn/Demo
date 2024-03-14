@@ -82,22 +82,6 @@ Name = eth*
 DHCP = yes
 EOF
 
-cat << EOF > /etc/X11/xorg.conf.d/20-nvidia.conf
-Section "Device"
-    Identifier     "Nvidia"
-    Driver         "nvidia"
-    VendorName     "NVIDIA Corporation"
-EndSection
-EOF
-
-cat << EOF > /etc/X11/xorg.conf.d/20-amdgpu.conf
-Section "Device"
-    Identifier "AMD"
-    Driver "amdgpu"
-    Option "TearFree" "true"
-EndSection
-EOF
-
 passwd
 useradd -m -G wheel -s /bin/bash username
 passwd username
