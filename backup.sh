@@ -1,7 +1,7 @@
 #!/bin/bash
 
-readonly SOURCE_DIR="/mnt/e/1/0 /home/vehlwn /etc"
-readonly LUKS_DEVICE="/dev/sda3"
+readonly SOURCE_DIR="/mnt/e /home/vehlwn /etc"
+readonly LUKS_DEVICE="/dev/sdb1"
 readonly MAPPING_NAME="cryptbackup"
 
 set -o errexit
@@ -16,8 +16,7 @@ function cleanup()
         cryptsetup close "${MAPPING_NAME}"
     fi
     if [ "${SUCCESS}" = "0" ]; then
-        echo "Failed to create backup. Removing ${BACKUP_PATH}..."
-        rm --recursive "${BACKUP_PATH}"
+        echo "Failed to create backup"
     fi
 }
 trap cleanup EXIT
