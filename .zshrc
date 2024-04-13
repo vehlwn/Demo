@@ -16,8 +16,8 @@ source ~/.zsh/options.zsh
 source ~/.zsh/prompt.zsh
 
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000
+SAVEHIST=$HISTSIZE
 
 # zsh-users/zsh-history-substring-search
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
