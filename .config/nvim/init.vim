@@ -62,6 +62,17 @@ let g:coc_filetype_map = {
     \ 'jinja.html': 'html',
     \ }
 
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+" Use K to show documentation in preview window
+nnoremap K :call ShowDocumentation()<CR>
+
+
 " vim-airline options
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
