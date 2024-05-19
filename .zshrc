@@ -23,6 +23,7 @@ SAVEHIST=$HISTSIZE
 HISTORY_SUBSTRING_SEARCH_PREFIXED=1
 
 source '/usr/share/zsh-antidote/antidote.zsh'
+source '/usr/share/fzf/key-bindings.zsh'
 antidote load
 
 typeset -U path
