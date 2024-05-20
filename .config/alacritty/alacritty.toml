@@ -39,3 +39,7 @@ white =   "0xffffff"
 
 [mouse]
 hide_when_typing = true
+
+[bell]
+duration = 200
+color = "0xff0000"
