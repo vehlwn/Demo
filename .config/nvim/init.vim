@@ -64,6 +64,7 @@ nnoremap K :call ShowDocumentation()<CR>
 " vim-airline options
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_min_count = 2
 
 " Terminal options
 " To map <Esc> to exit terminal-mode:
