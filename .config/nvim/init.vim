@@ -1,6 +1,5 @@
 call plug#begin()
 
-Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
 Plug 'derekwyatt/vim-fswitch'
@@ -52,9 +51,6 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap [g <Plug>(coc-diagnostic-prev)
 nmap ]g <Plug>(coc-diagnostic-next)
 inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-let g:coc_filetype_map = {
-    \ 'jinja.html': 'html',
-    \ }
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
