@@ -1,6 +1,5 @@
 call plug#begin()
 
-Plug 'cespare/vim-toml'
 Plug 'chriskempson/base16-vim'
 Plug 'derekwyatt/vim-fswitch'
 Plug 'junegunn/fzf'
