@@ -8,7 +8,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'luochen1990/rainbow'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
 Plug 'pboettch/vim-cmake-syntax'
