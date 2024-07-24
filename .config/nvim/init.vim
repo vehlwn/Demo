@@ -8,7 +8,6 @@ Plug 'junegunn/fzf'
 Plug 'ap/vim-css-color'
 Plug 'junegunn/vim-peekaboo'
 Plug 'luochen1990/rainbow'
-Plug 'nathanaelkane/vim-indent-guides'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tpope/vim-commentary'
@@ -41,11 +40,6 @@ let g:rainbow_conf = {
 \       'cmake': 0,
 \   }
 \}
-
-
-" Indent-guides options
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
 
 " Coc options
 autocmd CursorHold * call CocActionAsync('highlight')
