@@ -10,7 +10,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-scripts/bufkill.vim'
-Plug 'pboettch/vim-cmake-syntax'
 Plug 'chr4/nginx.vim'
 Plug 'nfnty/vim-nftables'
 
