@@ -14,6 +14,7 @@ vim.opt.shiftwidth = 4
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.tabstop = 4
+vim.opt.termguicolors = true
 vim.opt.undofile = true
 vim.opt.updatetime = 300
 vim.opt.wildignorecase = true
