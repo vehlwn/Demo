@@ -18,6 +18,6 @@ chain _log_invalid_drop {
 chain my_block {
     comment "Custom chain to unconditionally log and block packtes"
     limit name "_log_limit" log prefix "[NFT BLOCK] " counter
-    counter drop
+    counter reject with icmpx type admin-prohibited
 }
 
