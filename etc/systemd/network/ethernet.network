@@ -1,3 +1,6 @@
 [Match]
 Name = en*
 Name = eth*
+
+[Network]
+DHCP = yes
