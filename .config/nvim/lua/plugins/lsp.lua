@@ -2,6 +2,7 @@ local mason_servers = {
     "bashls",
     "lua_ls",
     "taplo",
+    "denols"
 }
 local manual_servers = {
     "clangd",
@@ -46,6 +47,11 @@ return {
                                 }
                             }
                         }
+                    })
+                end,
+                ["denols"] = function()
+                    lspconfig["denols"].setup({
+                        root_dir = lspconfig.util.root_pattern("package.json")
                     })
                 end
             })
