@@ -19,6 +19,10 @@ mkdir -p /mnt/boot/efi
 mount /dev/vda1 /mnt/boot/efi
 mkdir -p /mnt/home
 mount /dev/vg/home /mnt/home
+
+# Alternative if efistub:
+# /mnt/boot: fat32, ESP
+
 # pacman -Suy archlinux-keyring
 pacstrap -K /mnt base linux linux-firmware neovim cpio cryptsetup lvm2 efibootmgr git grub man man-pages net-tools sudo
 # alacritty base-devel bc bison breeze-icons clang cmake cups hplip libc++
@@ -64,6 +68,9 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Alternative with separate encrypted boot partition:
 dd if=/dev/urandom of=/root/cryptboot.keyfile bs=256 count=1
 cryptsetup luksAddKey /dev/vda2 /root/cryptboot.keyfile
+
+# Alternative with efistub:
+efibootmgr --create --disk /dev/vda --part 1 --label "Arch Linux" --loader /vmlinuz-linux --unicode 'root=UUID=... rw initrd=\initramfs-linux.img'
 
 > /etc/fstab:
 /dev/mapper/cryptboot   /boot           ext4            rw,relatime     0 2
