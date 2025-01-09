@@ -12,7 +12,8 @@ local manual_servers = {
     "rust_analyzer",
 }
 local conform_formatters = {
-    python = { "isort", "black" }
+    python = { "isort", "black" },
+    typescript = { "prettier" }
 }
 
 return {
