@@ -3,6 +3,9 @@
 chain my_input {
     comment "Custom chain for user filter INPUT rules"
 
+    udp sport 67 udp dport 68 counter accept comment "dhcpv4 client"
+    udp sport 547 udp dport 546 counter accept comment "dhcpv6 client"
+
     iifname "enp0s5" \
         udp sport $UNPRIVPORTS udp dport 443 \
         counter accept comment "wg0 listening port"
