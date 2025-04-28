@@ -10,7 +10,6 @@ end, {})
 vim.keymap.set("n", "<Leader>i", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
-vim.keymap.set("n", "<Leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<Leader>td", vim.lsp.buf.type_definition)
 
 vim.keymap.set("n", "<F2>", vim.lsp.buf.definition)
