@@ -7,8 +7,6 @@ vim.api.nvim_create_user_command("Format", function()
     require("conform").format({ async = false, lsp_format = "fallback" })
 end, {})
 
-vim.keymap.set("n", "[g", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]g", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<Leader>i", function()
     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end)
