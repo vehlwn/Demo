@@ -2,7 +2,6 @@ local mason_servers = {
     "bashls",
     "lua_ls",
     "taplo",
-    "html",
     "ts_ls"
 }
 local manual_servers = {
