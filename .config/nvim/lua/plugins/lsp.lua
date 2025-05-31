@@ -1,8 +1,9 @@
 local mason_servers = {
     "bashls",
+    "jsonls",
     "lua_ls",
     "taplo",
-    "ts_ls"
+    "ts_ls",
 }
 local manual_servers = {
     "clangd",
