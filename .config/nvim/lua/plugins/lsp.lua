@@ -1,6 +1,5 @@
 local mason_servers = {
     "bashls",
-    "jsonls",
     "lua_ls",
     "taplo",
     "ts_ls",
@@ -13,6 +12,7 @@ local manual_servers = {
 }
 local conform_formatters = {
     html = { "prettier" },
+    json = { "prettier" },
     python = { "isort", "black" },
     typescript = { "prettier" },
 }
@@ -52,11 +52,14 @@ return {
         end
     },
     "neovim/nvim-lspconfig",
-    "zapling/mason-conform.nvim",
     {
         "stevearc/conform.nvim",
         opts = {
             formatters_by_ft = conform_formatters,
         },
     },
+    {
+        "zapling/mason-conform.nvim",
+        opts = {}
+    }
 }
