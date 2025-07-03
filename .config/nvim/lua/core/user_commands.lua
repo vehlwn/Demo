@@ -12,6 +12,10 @@ vim.keymap.set("n", "<Leader>i", function()
 end)
 vim.keymap.set("n", "<Leader>td", vim.lsp.buf.type_definition)
 
+vim.keymap.set("n", "<Leader>;", function()
+    vim.api.nvim_paste(os.date("%d.%m.%Y"), false, -1)
+end)
+
 vim.keymap.set("n", "<F2>", vim.lsp.buf.definition)
 vim.keymap.set("n", "<F4>", "<CMD>ClangdSwitchSourceHeader<CR>")
 
