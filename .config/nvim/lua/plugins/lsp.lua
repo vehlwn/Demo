@@ -15,6 +15,7 @@ local conform_formatters = {
     json = { "prettier" },
     python = { "isort", "black" },
     typescript = { "prettier" },
+    yaml = { "prettier" },
 }
 
 return {
