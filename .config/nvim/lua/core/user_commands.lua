@@ -17,7 +17,7 @@ vim.keymap.set("n", "<Leader>;", function()
 end)
 
 vim.keymap.set("n", "<F2>", vim.lsp.buf.definition)
-vim.keymap.set("n", "<F4>", "<CMD>ClangdSwitchSourceHeader<CR>")
+vim.keymap.set("n", "<F4>", "<CMD>LspClangdSwitchSourceHeader<CR>")
 
 vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
 vim.keymap.set({ "n", "v" }, "<S-k>", vim.lsp.buf.hover)
