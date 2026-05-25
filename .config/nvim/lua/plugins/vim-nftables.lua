@@ -1,3 +1,0 @@
-return {
-    "nfnty/vim-nftables"
-}
