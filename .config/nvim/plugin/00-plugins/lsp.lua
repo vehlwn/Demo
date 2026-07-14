@@ -24,6 +24,7 @@ local conform_formatters = {
     python = { "isort", "black" },
     typescript = { "prettier" },
     yaml = { "prettier" },
+    cmake = { "cmake_format" }
 }
 
 require("mason").setup()
