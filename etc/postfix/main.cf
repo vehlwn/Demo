@@ -1,0 +1,98 @@
+compatibility_level = 3.11
+
+myhostname = example.com
+mydomain = $myhostname
+mydestination =
+
+mynetworks = 127.0.0.0/8, [::1]/128
+recipient_delimiter = +
+inet_protocols = all
+alias_maps =
+# 20 MiB
+message_size_limit = 20971520
+biff = no
+
+relayhost = [10.0.0.2]:225
+
+# Settings to prevent SPAM early
+disable_vrfy_command = yes
+smtpd_helo_required = yes
+smtpd_helo_restrictions = reject_invalid_helo_hostname, reject_non_fqdn_helo_hostname
+smtpd_sender_restrictions = reject_non_fqdn_sender, reject_unknown_sender_domain
+
+smtpd_restriction_classes = class_forbidden_recipients, class_mail_only, class_quota_policy, class_local_recipient_policies
+
+class_forbidden_recipients = check_recipient_access texthash:/etc/postfix/class_forbidden_recipients
+class_mail_only = check_recipient_access texthash:/etc/postfix/class_mail_only, reject
+class_quota_policy = check_policy_service unix:private/dovecot-quota-status
+class_local_recipient_policies = check_recipient_access texthash:/etc/postfix/class_local_recipient_policies
+
+smtpd_recipient_restrictions =
+	reject_unauth_pipelining,
+	reject_unauth_destination,
+	class_forbidden_recipients,
+	class_local_recipient_policies,
+
+
+mua_sender_restrictions = reject_sender_login_mismatch
+mua_relay_restrictions =
+	check_sender_access texthash:/etc/postfix/restricted_senders,
+	class_forbidden_recipients,
+	class_local_recipient_policies,
+	permit_sasl_authenticated,
+	reject
+
+
+# SASL
+smtpd_sasl_local_domain = $mydomain
+smtpd_sasl_path = private/auth
+smtpd_sasl_type = dovecot
+virtual_transport = lmtp:unix:private/dovecot-lmtp
+
+# disable sendmail command
+authorized_submit_users =
+authorized_mailq_users =
+authorized_flush_users =
+
+smtpd_sender_login_maps = proxy:sqlite:/etc/postfix/sqlite/virtual_sender_maps.cf
+virtual_alias_maps =
+   proxy:sqlite:/etc/postfix/sqlite/virtual_alias_maps.cf,
+   proxy:sqlite:/etc/postfix/sqlite/virtual_alias_domain_maps.cf,
+   proxy:sqlite:/etc/postfix/sqlite/virtual_alias_domain_catchall_maps.cf
+virtual_mailbox_domains = proxy:sqlite:/etc/postfix/sqlite/virtual_domains_maps.cf
+virtual_mailbox_maps =
+   proxy:sqlite:/etc/postfix/sqlite/virtual_mailbox_maps.cf,
+   proxy:sqlite:/etc/postfix/sqlite/virtual_alias_domain_mailbox_maps.cf
+
+
+# DKIM + SPF check
+smtpd_milters = unix:/run/opendkim/opendkim.sock, unix:/run/opendmarc/opendmarc.sock
+non_smtpd_milters = $smtpd_milters
+milter_default_action = accept
+
+
+# TLS
+# generated 2025-07-05, Mozilla Guideline v5.7, Postfix 3.9.0, OpenSSL 3.4.0, intermediate config
+# https://ssl-config.mozilla.org/#server=postfix&version=3.9.0&config=intermediate&openssl=3.4.0&guideline=5.7
+smtpd_tls_auth_only = yes
+smtpd_tls_chain_files = /etc/letsencrypt/live/example.com/privkey.pem,
+	/etc/letsencrypt/live/example.com/fullchain.pem
+
+smtpd_tls_security_level = may
+# gmail client doesn't support tls 1.3
+smtpd_tls_mandatory_protocols = >=TLSv1.2
+smtpd_tls_protocols           = >=TLSv1.2
+
+smtp_tls_security_level = may
+smtp_tls_mandatory_protocols  = >=TLSv1.2
+smtp_tls_protocols            = >=TLSv1.2
+
+tls_preempt_cipherlist = no
+tls_eecdh_auto_curves = X25519 prime256v1 secp384r1
+tls_ffdhe_auto_groups =
+smtp_tls_mandatory_ciphers = medium
+smtpd_tls_mandatory_ciphers = medium
+tls_medium_cipherlist = ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:DHE-RSA-CHACHA20-POLY1305
+smtp_tls_loglevel = 1
+smtpd_tls_loglevel = 1
+smtpd_tls_received_header = yes
