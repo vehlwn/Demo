@@ -23,6 +23,9 @@ table inet filter {
         ct state invalid counter jump _log_invalid_drop comment "Early drop of invalid connections"
         ct state established,related counter accept comment "Allow established sessions"
 
+        udp sport 67 udp dport 68 counter accept comment "dhcpv4 server to client"
+        udp sport 547 udp dport 546 counter accept comment "dhcpv6 server to client"
+
         fib daddr type broadcast counter jump _handle_broadcast
 
         # Port scan protection. Check portscan list and if a packet is in the
