@@ -34,30 +34,7 @@ table inet filter {
             update @_portscan_blacklist_v6 { ip6 saddr } \
             counter jump _log_portscan_drop
 
-        icmp type {
-            destination-unreachable,
-            echo-request,
-            parameter-problem,
-            time-exceeded,
-        } counter accept
-
-        icmpv6 type {
-            destination-unreachable,
-            echo-request,
-            ind-neighbor-advert,
-            ind-neighbor-solicit,
-            mld-listener-query,
-            mld-listener-reduction,
-            mld-listener-report,
-            mld2-listener-report,
-            nd-neighbor-advert,
-            nd-neighbor-solicit,
-            nd-router-advert,
-            nd-router-solicit,
-            packet-too-big,
-            parameter-problem,
-            time-exceeded,
-        } counter accept
+        meta l4proto { icmp, icmpv6 } counter accept comment "allow icmp"
 
         meta l4proto udp fib daddr type multicast \
             counter accept comment "Allow incoming multicast packets"
