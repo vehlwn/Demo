@@ -3,7 +3,7 @@ set -o errexit
 CAPTURE_MODE="$1"
 set -o nounset
 
-SAVE_DIR=~/tmp
+SAVE_DIR=~/Pictures/Screenshots
 mkdir --verbose -p -- "$SAVE_DIR"
 
 NAME="Screenshot_$(date +%F_%H-%M-%S.%N).png"
@@ -27,7 +27,7 @@ case "$CAPTURE_MODE" in
         ;;
 
     *)
-        echo Unknown mode: $CAPTURE_MODE
+        echo "Unknown mode: $CAPTURE_MODE"
         exit 1
 esac
 
