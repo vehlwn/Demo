@@ -78,6 +78,15 @@ efibootmgr --create --disk /dev/vda --part 1 --label "Arch Linux" --loader /vmli
 > /etc/crypttab:
 cryptboot UUID=.... /root/cryptboot.keyfile
 
+# Alternative with systemd-boot (/boot must be mounted as efi partition):
+bootctl install
+
+> /boot/loader/loader.conf:
+default arch.conf
+
+cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries
+# edit arch.conf
+
 systemctl enable systemd-networkd systemd-resolved
 ln -sf /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
